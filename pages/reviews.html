@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *, *::before, *::after {
+        box-sizing: border-box;
+        }
+
+        body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        background-color: #FFFFFF; 
+        color: #000000;
+        overflow-x: hidden;
+        }
+
+        h1 {
+        font-size: 2.7;
+      }
+
+      h2 {
+        font-size: 2.4vw;
+      }
+
+      h3 {
+        font-size: 2.1vw;
+      }
+
+      h4 {
+        font-size: 1.8vw;
+      }
+
+      h5 {
+        font-size: 1.5vw;
+      }
+
+      p {
+        font-size: 1.2vw;
+      }
+
+      .header {
+        background-color: #010A31; 
+        padding: 2vw;
+        text-align: center;
+      }
+
+      .banner {
+        width: 30vw; 
+        height: auto;
+      }
+
+      .menu {
+        position: absolute;
+        left: 2vw;
+        top: 4vw;
+        width: 3vw;
+        height: auto;
+        cursor: pointer;
+      }
+
+      /* drawer navigation */
+      .nav-menu {
+        position: fixed;
+        z-index: 3;
+        top: 0;
+        left: -19vw;
+        width: 19vw;
+        height: 100%;
+        background-color: #000000; 
+        overflow-x: hidden;
+        transition: 0.5s; /* Add smooth transition effect */
+      }
+
+      .nav-menu ul {
+        list-style: none;
+        padding: 20px;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+      }
+
+      .services-tab{
+        display: flex; 
+        flex-direction: row;
+        margin: 2vw 2vw 2vw 0;
+      }
+
+      .services-navigation {
+        margin-left: 1.5vw;
+        max-height: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: max-height 0.5s ease-out;
+        align-items: flex-start;
+      }
+
+      .service-entry {
+        margin: .7vw .7vw .7vw 0;
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 1.3vw;
+        display: flex;
+        flex-wrap: nowrap;
+        cursor: pointer;
+        font-weight: bold;
+        justify-content: left;
+      }
+
+      .main-entry {
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 1.5vw;
+        display: flex;
+        flex-wrap: nowrap;
+        margin: 1.1vw 1.1vw 1.1vw 0;
+        cursor: pointer;
+        font-weight: bold;
+        justify-content: left;
+      }
+
+      .services-navigation.visible {
+        max-height: 30vw; 
+      }
+
+      .services-arrow-right.visible {
+        opacity: 0; 
+      }
+
+      .services-arrow-down.visible{
+        opacity: 1;
+      }
+
+      .services-arrow-right {
+        position: absolute;
+        opacity: 1;
+        margin-top: 0vw;
+        margin-left: 10vw;
+        font-size: 1.8vw;
+        color:#FFFFFF;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .services-arrow-down {
+        position: absolute;
+        margin-top: 0vw;
+        margin-left: 10vw;
+        opacity: 0;
+        font-size: 1.8vw;
+        color:#FFFFFF;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .nav-menu h5 {
+        padding-top: .3vw;
+        text-decoration: none;
+        color: #fff;  
+        display: flex;
+        margin: 0;
+        cursor: pointer;
+      }
+
+        /* reviews */
+        .reviews {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        }
+
+        .review {
+        position: relative;
+        background-color: #010A31;
+        color:#FFFFFF;
+        border-radius: 15px;
+        margin: .5vw;
+        padding: 1.5vw;
+        width: 70%;
+        box-sizing: border-box;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        }
+                
+        .review-text {
+        font-size: 2vw;
+        margin: 0;
+        padding-bottom: .5rem;
+        padding-top: .5rem;
+        }
+
+        .star {
+        color: yellow;
+        font-size: 2vw;
+        }
+
+        .comment {
+        padding: 2vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 2;
+        }
+
+        .slide {
+        position: absolute;
+        inset: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        padding: 0vw;
+        transition: 600ms opacity ease-in-out;
+        transition-delay: 0ms;
+        overflow: hidden;
+        }
+
+        .review-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        padding: 1.5vw;
+        }
+
+        .star-cont {
+        display: flex;
+        flex-direction: row;
+        }
+
+
+        /* footer */
+        footer {
+            margin-top: 3vw;
+            background-color: #010A31; 
+            color: #FFFFFF; 
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .logo-section{
+            width: 30%;
+            text-align: center; 
+        }
+
+        .social-media {
+            width: 30%;
+            list-style: none;
+            text-align: center; 
+            justify-content: space-between;
+        }
+
+        .business-hours {
+            width: 30%;
+            text-align: center; 
+        }
+
+        .social-media h3 {
+            padding: 1rem;
+        }
+
+        .logo-section img {
+            width: 150px; 
+            height: auto;
+        }
+
+        .social-media img {
+            width: 50px;
+            height: auto;
+            margin: 1rem;
+        }
+
+        
+        .social-media a {
+        text-decoration: none;
+        }
+
+        .business-hours h3,
+        .slogan-section h3,
+        .social-media h3 {
+            font-size: 1.5rem;
+        }
+    </style>
+    <title>Reviews - Epic Horizons Landscaping</title>
+    <link rel="icon" type="image/x-icon" href="./resources/logo.png">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header">
+            
+            <img class="menu" src="../resources/menu.png" alt="Company Banner" onclick="menu()">
+           
+            <div id="nav-menu" class="nav-menu">
+                <ul>
+                    <li><a class="main-entry" href="index.html">Home</a></li>
+                    <li class="services-tab"><h5>Services</h5><span id="services-arrow-right" class="services-arrow-right" onclick="toggleServicesNavigation()">⮞</span><span class="services-arrow-down" onclick="toggleServicesNavigation()">&#11167;</span></li>
+                    <div class="services-navigation">
+                        <li><a style="margin-top: 0;" class="service-entry" href="lawn-care.html">Lawn Care</a></li>
+                        <li><a class="service-entry" href="landscaping.html">Landscaping</a></li>
+                        <li><a class="service-entry" href="pressure-washing.html">Pressure Washing</a></li>
+                        <li><a class="service-entry" href="tree-work.html">Tree Work</a></li>
+                        <li><a class="service-entry" href="sod.html">Sod</a></li>
+                        <li><a class="service-entry" href="irrigation.html">Irrigation</a></li>
+                    </div>
+                    <li><a class="main-entry" href="posts.html"> Posts </a></li>
+                    <li><a class="main-entry" href="reviews.html"> Reviews </a></li>
+                    <li><a class="main-entry" href="contact.html"> Contact </a></li>
+                </ul>
+            </div>
+            <img class="banner" src="../resources/banner.png" alt="Company Banner">
+        </div>
+    </header>
+  
+
+    <div id="review-list" class="reviews">
+        <h1>Reviews</h1>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="business-hours">
+            <h3>Business Hours</h3>
+            <p>Monday: 7:00 AM - 9:00 PM</p>
+            <p>Tuesday: 7:00 AM - 9:00 PM</p>
+            <p>Wednesday: 7:00 AM - 9:00 PM</p>
+            <p>Thursday: 7:00 AM - 9:00 PM</p>
+            <p>Friday: 7:00 AM - 9:00 PM</p>
+            <p>Saturday: 7:00 AM - 9:00 PM</p>
+            <p>Sunday: Closed</p>
+        </div>
+  
+        <div class="logo-section">
+            <img src="../resources/logo.png" alt="Company Logo">
+            <h3>Providing the Epic Solutions</h3>
+        </div>
+  
+        <div class="social-media">
+          <h3>Follow Us</h3>
+              <a href="https://www.instagram.com/epichorizonslandscaping/">
+                  <img src="../resources/Instagram Logo.png" alt="Connect with us on Instagram">
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=61554595514173&mibextid=ZbWKwL">
+                  <img src="../resources/Facebook Logo.png" alt="Connect with us on Facebook">
+              </a>
+              <a href="https://g.page/r/CTMK7ZrHugLREBM/">
+                  <img src="../resources/Google Logo.png" alt="Connect with us on Google" >
+              </a>
+
+      </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reviewElement = document.getElementById('review-list');
+
+            fetch('http://localhost:8080/getreviews')
+            .then(response => response.json())
+            .then(reviews => {
+                reviewList = reviews.reviews
+                reviewList.forEach(review => {
+                    let stars = review.starRating == "FIVE" ? `<span class="star">&#9733;</span>
+                                                  <span class="star">&#9733;</span>
+                                                  <span class="star">&#9733;</span>
+                                                  <span class="star">&#9733;</span>
+                                                  <span class="star">&#9733;</span>`:  
+                                                  `<span class="star">&#9734;</span>
+                                                  <span class="star">&#9733;</span>
+                                                  <span class="star">&#9733;</span>
+                                                  <span class="star">&#9733;</span>
+                                                  <span class="star">&#9733;</span>`;
+                    let comment = review.comment? `<p class="review-text comment">${review.comment}</p>`: `<p class="review-text comment">(No comment submitted)</p>`
+                    reviewElement.insertAdjacentHTML('beforeend', 
+                        `<li class="review">
+                            <div class="review-info">
+                                <img src="${review.reviewer.profilePhotoUrl}" alt="profile photo" width=100 height=100>
+                                <p class="review-text"> ${review.reviewer.displayName}</p>
+                                <div class="star-cont">
+                                    ${stars}
+                                </div>
+                                <p class="review-text">${review.updateTime.slice(0, 10)}</p>
+                            </div>
+                            ${comment}
+                        </li>`)
+                });
+            });
+        });
+
+                    
+        function menu() {
+            var navMenu = document.getElementById('nav-menu');
+            navMenu.style.left = '0';
+            console.log("toggled menu")
+            document.addEventListener('click', closeMenuOutsideClick);
+            event.stopPropagation();
+        }
+
+        function closeMenuOutsideClick(event) {
+            var navMenu = document.getElementById('nav-menu');
+
+            if (!navMenu.contains(event.target)) {
+                navMenu.style.left = '-19vw';
+                document.removeEventListener('click', closeMenuOutsideClick);
+            }
+        }
+        
+    </script>
+</body>
+</html>

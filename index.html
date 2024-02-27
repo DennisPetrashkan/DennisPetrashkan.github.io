@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css">
+    <title>Epic Horizons Landscaping</title>
+    <link rel="icon" type="image/x-icon" href="./resources/logo.png">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header">
+            
+            <img class="menu" src="./resources/menu.png" alt="Company Banner" onclick="menu()">
+            <h1 class="hidden-title">Epic Horizons Landscaping--North Port</h1>
+           
+            <div id="nav-menu" class="nav-menu">
+                <ul>
+                    <li><a class="main-entry" href="index.html">Home</a></li>
+                    <li class="services-tab"><h5>Services</h5><span id="services-arrow-right" class="services-arrow-right" onclick="toggleServicesNavigation()">⮞</span><span class="services-arrow-down" onclick="toggleServicesNavigation()">&#11167;</span></li>
+                    <div class="services-navigation">
+                        <li><a style="margin-top: 0;" class="service-entry" href="./pages/lawn-care.html">Lawn Care</a></li>
+                        <li><a class="service-entry" href="./pages/landscaping.html">Landscaping</a></li>
+                        <li><a class="service-entry" href="./pages/pressure-washing.html">Pressure Washing</a></li>
+                        <li><a class="service-entry" href="./pages/tree-work.html">Tree Work</a></li>
+                        <li><a class="service-entry" href="./pages/sod.html">Sod</a></li>
+                        <li><a class="service-entry" href="./pages/irrigation.html">Irrigation</a></li>
+                    </div>
+                    <li><a class="main-entry" href="./pages/posts.html"> Posts </a></li>
+                    <li><a class="main-entry" href="./pages/reviews.html"> Reviews </a></li>
+                    <li><a class="main-entry" href="./pages/Contact.html"> Contact </a></li>
+                </ul>
+            </div>
+            <img class="banner" src="./resources/banner.png" alt="Company Banner">
+        </div>
+    </header>
+  
+
+    <!-- Body Section -->
+    <div class="body-container"></div>
+        <div class="gallery" id="media-list">
+            <a href="tel:19419468403" class="contact-button">Contact Us</a>
+        </div>
+        <div class="carousel-cont">
+            <div class="carousel" data-carousel>
+                <!-- <button class="carousel-button prev" data-carousel-button="prev">&#8656;</button>
+                <button class="carousel-button next" data-carousel-button="next">&#8658;</button> -->
+                <ul id="reviews-list" data-slides>
+                    
+                </ul>
+            </div>
+        </div>
+
+        <!-- Free Quote Section -->
+        <section class="quote-form-cont">
+            <h2>Get a <span style="color: #6E9BF0;">Free Quote</span></h2>
+            <div class="quote-form">
+                <div class="input-cont">
+                    <label for="senderName">Your Name:</label>
+                    <input type="text" id="senderName" name="senderName" required>
+                </div>
+                <div class="input-cont">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                </div>
+                <div class="input-cont">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-cont">
+                    <label for="message">Job Description:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div >
+            </div>
+            <div class="button-cont">
+                <button onclick="sendEmail()" type="submit">Send Message</button>
+            </div>
+            <div class="gratitude-window" id="gratitude-window">
+                <h2>Thank you! We'll get back to you as soon as possible.</h2>
+            </div>
+        </section>
+    
+        <!-- About Us Section -->
+        <section class="about-us container">
+            <h2>About Us</h2>
+            <p>Welcome to Epic Horizons Landscaping, where creativity meets expertise. We are a passionate team dedicated to crafting stunning outdoor spaces that reflect the unique vision and lifestyle of our clients. With a commitment to quality and innovation, we bring landscapes to life, making dreams blossom into reality.</p>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services">
+            <h2>Our Services</h2>
+            <ul>
+                <li>
+                    <a href="./pages/lawn-care.html">
+                        <img src="./resources/lawncare-media.png" alt="Lawn Care">
+                        <h3>Lawn Care</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="./pages/landscaping.html">
+                        <img src="./resources/landscaping-media.png" alt="Landscaping">
+                        <h3>Landscaping</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="./pages/pressure-washing.html">
+                        <img src="./resources/pressure-washing-media.png" alt="Pressure Washing/Soft Washing">
+                        <h3>Pressure Washing/Soft Washing</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="./pages/tree-work.html">
+                        <img src="./resources/tree-work-media.png" alt="Tree Work">
+                            <h3>Tree Work</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="./pages/sod.html">
+                        <img src="./resources/sod-media.png" alt="Sod Installation">
+                        <h3>Sod Installation</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="./pages/irrigation.html">
+                        <img src="./resources/irrigation-media.png" alt="Irrigation">
+                        <h3>Irrigation</h3>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Post Section -->
+        <div id="post-list" class="posts">
+            <h2>Posts</h2>
+        </div>
+        <a href="posts.html" class="posts-button">More Posts</a>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="business-hours">
+            <h3>Business Hours</h3>
+            <p>Monday: 7:00 AM - 9:00 PM</p>
+            <p>Tuesday: 7:00 AM - 9:00 PM</p>
+            <p>Wednesday: 7:00 AM - 9:00 PM</p>
+            <p>Thursday: 7:00 AM - 9:00 PM</p>
+            <p>Friday: 7:00 AM - 9:00 PM</p>
+            <p>Saturday: 7:00 AM - 9:00 PM</p>
+            <p>Sunday: Closed</p>
+        </div>
+
+        <div class="logo-section">
+            <img src="./resources/logo.png" alt="Company Logo">
+            <h3>Providing the Epic Solutions</h3>
+        </div>
+
+        <div class="social-media">
+            <h3>Follow Us</h3>
+                <a href="https://www.instagram.com/epichorizonslandscaping/">
+                    <img src="./resources/Instagram Logo.png" alt="Connect with us on Instagram">
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61554595514173&mibextid=ZbWKwL">
+                    <img src="./resources/Facebook Logo.png" alt="Connect with us on Facebook">
+                </a>
+                <a href="https://g.page/r/CTMK7ZrHugLREBM/">
+                    <img src="./resources/Google Logo.png" alt="Connect with us on Google" >
+                </a>
+
+        </div>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>

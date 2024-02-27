@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+
+      h1 {
+        font-size: 2.7;
+      }
+
+      h2 {
+        font-size: 2.4vw;
+      }
+
+      h3 {
+        font-size: 2.1vw;
+      }
+
+      h4 {
+        font-size: 1.8vw;
+      }
+
+      h5 {
+        font-size: 1.5vw;
+      }
+
+      p {
+        font-size: 1.2vw;
+      }
+
+      .header {
+        background-color: #010A31; 
+        padding: 2vw;
+        text-align: center;
+      }
+
+      .banner {
+        width: 30vw; 
+        height: auto;
+      }
+
+      .menu {
+        position: absolute;
+        left: 2vw;
+        top: 4vw;
+        width: 3vw;
+        height: auto;
+        cursor: pointer;
+      }
+
+      /* drawer navigation */
+      .nav-menu {
+        position: fixed;
+        z-index: 3;
+        top: 0;
+        left: -19vw;
+        width: 19vw;
+        height: 100%;
+        background-color: #000000; 
+        overflow-x: hidden;
+        transition: 0.5s; /* Add smooth transition effect */
+      }
+
+      .nav-menu ul {
+        list-style: none;
+        padding: 20px;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+      }
+
+      .services-tab{
+        display: flex; 
+        flex-direction: row;
+        margin: 2vw 2vw 2vw 0;
+      }
+
+      .services-navigation {
+        margin-left: 1.5vw;
+        max-height: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: max-height 0.5s ease-out;
+        align-items: flex-start;
+      }
+
+      .service-entry {
+        margin: 1vw 1vw 1vw 0;
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 1.3vw;
+        display: flex;
+        flex-wrap: nowrap;
+        cursor: pointer;
+        font-weight: bold;
+        justify-content: left;
+      }
+
+      .main-entry {
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 1.5vw;
+        display: flex;
+        flex-wrap: nowrap;
+        margin: 2vw 2vw 2vw 0;
+        cursor: pointer;
+        font-weight: bold;
+        justify-content: left;
+      }
+
+      .services-navigation.visible {
+        max-height: 30vw; 
+      }
+
+      .services-arrow-right.visible {
+        opacity: 0; 
+      }
+
+      .services-arrow-down.visible{
+        opacity: 1;
+      }
+
+      .services-arrow-right {
+        position: absolute;
+        opacity: 1;
+        margin-top: 0vw;
+        margin-left: 10vw;
+        font-size: 1.8vw;
+        color:#FFFFFF;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .services-arrow-down {
+        position: absolute;
+        margin-top: 0vw;
+        margin-left: 10vw;
+        opacity: 0;
+        font-size: 1.8vw;
+        color:#FFFFFF;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .nav-menu h5 {
+        padding-top: .3vw;
+        text-decoration: none;
+        color: #fff;  
+        display: flex;
+        margin: 0;
+        cursor: pointer;
+      }
+
+      /* Body Styles */
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        background-color: #f0f0f0;
+      }
+
+      /* Contact Info */
+      .contact-info-cont {
+          background-color: white;
+          padding: 2vw;
+          margin: 5vw 15vw;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          text-align: center;
+      }
+
+      .contact-info {
+        display: flex;
+        flex-direction: row;
+        margin-top: 5vw;
+      }
+
+      .contact-info-block-1 {
+        flex: 2;
+      }
+
+      .contact-info-block-2 {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        align-items: end;
+        margin-right: 4vw;
+      }
+
+      .contact-info-block-2 p {
+        margin: .8vw ;
+      }
+
+      .contact-info-element {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+      }
+
+      .social-media-body p {
+        font-size: 1.2vw;
+      }
+
+      .social-media-body a {
+        text-decoration: none;
+      }
+
+      .social-media-body {
+        text-align: center; 
+        justify-content: space-between;
+        display: flex;
+        flex-direction: row;
+        margin-top: 5vw;
+      }
+
+      .social-media-body img {
+        width: 50px;
+        height: auto;
+        margin: 1rem;
+      }
+
+      /* contact form */
+      .contact-form-cont {
+        background-color: white;
+        padding: 5vw;
+        margin: 5vw 15vw;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+    
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 3vw;
+      }
+
+      .contact-form-cont label {
+        font-weight: bold;
+      }
+
+      .contact-form-cont textarea {
+        width: 75%;
+      }
+
+      .contact-form-cont input {
+        width: 75%;
+      }
+
+      .contact-info-cont a {
+        text-decoration: none;
+      }
+
+      .input-cont {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin: 1vw 2vw;
+      }
+
+      /* contact form button */
+      button {
+          background-color: #333;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+      }
+
+      .button-cont {
+        text-align: center;
+        width: 100%;
+      }
+
+      
+      button:hover {
+          background-color: #555;
+      }
+
+
+      /* footer */
+      footer {
+        background-color: #010A31; 
+        color: #FFFFFF; 
+        padding: 30px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .logo-section{
+        width: 30%;
+        text-align: center; 
+      }
+
+      .social-media {
+        width: 30%;
+        text-align: center; 
+        justify-content: space-between;
+      }
+
+      .social-media a {
+        text-decoration: none;
+      }
+
+      .business-hours {
+        width: 30%;
+        text-align: center; 
+      }
+
+      .social-media h3 {
+        padding: 1rem;
+      }
+
+      .logo-section img {
+        width: 150px; 
+        height: auto;
+      }
+
+      .social-media img {
+        width: 50px;
+        height: auto;
+        margin: 1rem;
+      }
+
+      .business-hours h3,
+      .slogan-section h3,
+      .social-media h3 {
+        font-size: 1.5rem;
+      }
+    </style>
+    <title>Contact Us - Epic Horizons Landscaping</title>
+    <link rel="icon" type="image/x-icon" href="./resources/logo.png">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+      <div class="header">
+          
+          <img class="menu" src="../resources/menu.png" alt="Company Banner" onclick="menu()">
+         
+          <div id="nav-menu" class="nav-menu">
+              <ul>
+                  <li><a class="main-entry" href="index.html">Home</a></li>
+                  <li class="services-tab"><h5>Services</h5><span id="services-arrow-right" class="services-arrow-right" onclick="toggleServicesNavigation()">⮞</span><span class="services-arrow-down" onclick="toggleServicesNavigation()">&#11167;</span></li>
+                  <div class="services-navigation">
+                      <li><a class="service-entry" href="lawn-care.html">Lawn Care</a></li>
+                      <li><a class="service-entry" href="landscaping.html">Landscaping</a></li>
+                      <li><a class="service-entry" href="pressure-washing.html">Pressure Washing</a></li>
+                      <li><a class="service-entry" href="tree-work.html">Tree Work</a></li>
+                      <li><a class="service-entry" href="sod.html">Sod</a></li>
+                      <li><a class="service-entry" href="irrigation.html">Irrigation</a></li>
+                  </div>
+                  <li><a class="main-entry" href="posts.html"> Posts </a></li>
+                  <li><a class="main-entry" href="reviews.html"> Reviews </a></li>
+                  <li><a class="main-entry" href="contact.html"> Contact </a></li>
+              </ul>
+          </div>
+          <img class="banner" src="../resources/banner.png" alt="Company Banner">
+      </div>
+    </header>
+
+    
+    <section class="contact-info-cont">
+      <h2>Our Contact Information</h2>
+      <div class="contact-info">
+        <div class="contact-info-block-1"> 
+          <div class="contact-info-element">
+            <p><strong>Business Name:</strong> Epic Horizons Landscaping</p>
+          </div>
+          <div class="contact-info-element">
+            <p><strong>Phone: &nbsp;</strong></p>
+            <a href="tel:19419468403">
+              <p> (941) 946-8403</p>
+            </a>
+          </div>
+          <div class="contact-info-element">
+            <p><strong>Email:  &nbsp;</strong></p>
+            <a href="mailto: info@epichorizonslandscaping.com"><p>info@epichorizonslandscaping.com</p></a>
+          </div>
+        </div>
+        <div class="contact-info-block-2">
+          <p style="margin-top: 1em;">2780 Badger Lane,</p>
+          <p>North Port FL 34286</p>
+        </div>
+      </div>
+
+      <div class="social-media-body">
+        <div class="icon-cont">
+          <img src="../resources/Instagram Logo.png" alt="Connect with us on Instagram">
+          <a href="https://www.instagram.com/epichorizonslandscaping/"> 
+            <p>epichorizonslandscaping</p>
+          </a>
+        </div>
+          
+        <div class="icon-cont">
+          <img src="../resources/Facebook Logo.png" alt="Connect with us on Facebook">
+          <a href="https://www.facebook.com/profile.php?id=61554595514173&mibextid=ZbWKwL">
+            <p>Epic Horizons Landscaping</p>
+          </a>
+        </div>
+
+        <div class="icon-cont">
+          <img src="../resources/Google Logo.png" alt="Connect with us on Google" >
+          <a href="https://g.page/r/CTMK7ZrHugLREBM/">
+            <p>Epic Horizons Landscaping--North Port</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-form-cont">
+      <h2>Message Us</h2>
+      <form class="contact-form">
+        <div class="input-cont">
+          <label for="senderName">Your Name:</label>
+          <input type="text" id="senderName" name="senderName" required>
+        </div>
+        <div class="input-cont">
+          <label for="phoneNumber">Phone Number:</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber" required>
+        </div>
+        <div class="input-cont">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="input-cont">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div >
+      </form>
+      <div class="button-cont">
+        <button onclick="sendEmail()" type="submit">Send Message</button>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="business-hours">
+          <h3>Business Hours</h3>
+          <p>Monday: 7:00 AM - 9:00 PM</p>
+          <p>Tuesday: 7:00 AM - 9:00 PM</p>
+          <p>Wednesday: 7:00 AM - 9:00 PM</p>
+          <p>Thursday: 7:00 AM - 9:00 PM</p>
+          <p>Friday: 7:00 AM - 9:00 PM</p>
+          <p>Saturday: 7:00 AM - 9:00 PM</p>
+          <p>Sunday: Closed</p>
+      </div>
+
+      <div class="logo-section">
+          <img src="../resources/logo.png" alt="Company Logo">
+          <h3>Providing the Epic Solutions</h3>
+      </div>
+
+      <div class="social-media">
+        <h3>Follow Us</h3>
+            <a href="https://www.instagram.com/epichorizonslandscaping/">
+                <img src="../resources/Instagram Logo.png" alt="Connect with us on Instagram">
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61554595514173&mibextid=ZbWKwL">
+                <img src="../resources/Facebook Logo.png" alt="Connect with us on Facebook">
+            </a>
+            <a href="https://g.page/r/CTMK7ZrHugLREBM/">
+                <img src="../resources/Google Logo.png" alt="Connect with us on Google" >
+            </a>
+
+      </div>
+  </footer>
+  <script>
+    function menu() {
+      var navMenu = document.getElementById('nav-menu');
+      navMenu.style.left = '0';
+      document.addEventListener('click', closeMenuOutsideClick);
+      event.stopPropagation();
+    }
+
+    function closeMenuOutsideClick(event) {
+      var navMenu = document.getElementById('nav-menu');
+      var rightArrow = document.getElementById("services-arrow-right");
+      if (!navMenu.contains(event.target)) {
+          navMenu.style.left = '-19vw';
+          document.removeEventListener('click', closeMenuOutsideClick);
+          if (window.getComputedStyle(rightArrow).opacity == 0){
+            toggleServicesNavigation()
+          }
+      }
+    }
+
+    function toggleServicesNavigation() {
+      const servicesNavigation = document.querySelector('.services-navigation');
+      const downArrow = document.querySelector('.services-arrow-down');
+      const rightArrow = document.querySelector('.services-arrow-right');
+      servicesNavigation.classList.toggle('visible');
+      rightArrow.classList.toggle('visible');
+      downArrow.classList.toggle('visible');
+    }
+
+
+    function sendEmail(){
+
+      let name = document.getElementById('senderName').value;
+      let number = document.getElementById('phoneNumber').value;
+      let emailAddress = document.getElementById('email').value;
+      let messageBody = document.getElementById('message').value;
+
+      const url = 'http://localhost:8080/send-email';
+
+      const data = {
+          name: name,
+          phoneNumber: number,
+          email: emailAddress,
+          text: messageBody
+      };
+
+      const requestOptions = {
+          method: 'POST', 
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+      };
+
+      fetch(url, requestOptions)
+          .then(response => response.json()) // Parse the JSON response
+          .then(data => console.log(data)) // Handle the response data
+          .catch(error => console.error('Error:', error)); // Handle any errors
+
+      document.getElementById('senderName').value = "";
+      document.getElementById('phoneNumber').value = "";
+      document.getElementById('email').value = "";
+      document.getElementById('message').value = "";
+    }
+
+  </script>
+</body>
+</html>
