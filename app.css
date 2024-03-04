@@ -101,7 +101,7 @@ body {
   }
 
   .service-entry {
-    margin: 1vw 1vw 1vw 0;
+    margin: .8vw .8vw .8vw 0;
     text-decoration: none;
     color: #FFFFFF;
     font-size: 1.3vw;
@@ -118,7 +118,7 @@ body {
     font-size: 1.5vw;
     display: flex;
     flex-wrap: nowrap;
-    margin: 2vw 2vw 2vw 0;
+    margin: 1.2vw 1.2vw 1.2vw 0;
     cursor: pointer;
     font-weight: bold;
     justify-content: left;
