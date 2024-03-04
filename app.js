@@ -21,6 +21,7 @@ buttons.forEach(button => {
 function showNextImage(newIndex, slides, activeSlide){
   delete activeSlide.dataset.active
   slides.children[newIndex].dataset.active = true
+  resizeText(slides.children[newIndex], "comment");
   myTimeout = setTimeout(selectNextImage, 5000);
 }
 
@@ -56,12 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
                                                   <span class="star">&#9733;</span>
                                                   <span class="star">&#9733;</span>
                                                   <span class="star">&#9733;</span>`;
-        let comment = review.comment? `<p class="review-text comment">${review.comment}</p>`: ``
+        let comment = review.comment? `<p class="comment">${review.comment}</p>`: ``
         if (review.comment){
           reviewElement.insertAdjacentHTML('beforeend', 
             `<li class="slide" ${activeSlide}>
               <div class="review-info">
-                <img src="${review.reviewer.profilePhotoUrl}" alt="profile photo" width=100 height=100>
+                <img src="${review.reviewer.profilePhotoUrl}" alt="profile photo">
                 <p class="review-text"> ${review.reviewer.displayName}</p>
                 <div class="star-cont">
                   ${stars}
@@ -123,12 +124,11 @@ document.addEventListener('DOMContentLoaded', () => {
       let post = postList[i]
       let postMedia = ``
       let pass = true;
-      post.media.forEach(media => {
-        if (media.mediaFormat == "PHOTO"){
-          postMedia  += `<img class="postMedia" src="${media.googleUrl}" alt="landscaping in North Port">`; 
-        }else{
-          pass = false;}                   
-      })
+      media = post.media[0]
+      if (media.mediaFormat == "PHOTO"){
+        postMedia  += `<img class="postMedia" src="${media.googleUrl}" alt="landscaping in North Port">`; 
+      }else{
+        pass = false;}                   
       if (pass){
         postElement.insertAdjacentHTML('beforeend', 
                                   `<li class="post">
@@ -136,14 +136,14 @@ document.addEventListener('DOMContentLoaded', () => {
                                       ${postMedia}
                                     </div>
                                     <div class="postWords"> 
-                                      <p class="postSummary">${post.summary}</p>
-                                      <p class="postUpdateTime">${post.updateTime.slice(0, 10)}</p>
+                                      <p class="postSummary">${post.summary} <br> ${post.updateTime.slice(0, 10)}</p>
                                     </div>
                                   </li>`);
         postsRendered += 1;
       }
       i += 1
     };
+    [...document.getElementsByClassName("postWords")].forEach(element => {resizeText(element, "postSummary")});
   })
   .catch(error => console.error('Error fetching media:', error));
   
@@ -156,7 +156,6 @@ function startScrolling(mediaElement){
 
   setInterval(() => {
     scrollPosition += 1;
-    console.log("scrollPosition: " + scrollPosition)
     if (scrollPosition >= galleryWidth) {
       scrollPosition = 0;
     }
@@ -175,7 +174,7 @@ function closeMenuOutsideClick(event) {
   var navMenu = document.getElementById('nav-menu');
   var rightArrow = document.getElementById("services-arrow-right");
   if (!navMenu.contains(event.target)) {
-      navMenu.style.left = '-19vw';
+      navMenu.style.left = '-40vw';
       document.removeEventListener('click', closeMenuOutsideClick);
       if (window.getComputedStyle(rightArrow).opacity == 0){
         toggleServicesNavigation()
@@ -227,6 +226,20 @@ function sendEmail(){
   document.getElementById('message').value = "";
   let gratitude = document.getElementById('gratitude-window');
   gratitude.classList.toggle('visible');
+}
+
+function resizeText(activeSlide, className) {
+  const element = activeSlide.getElementsByClassName(className)[0]
+ 
+  var size = parseFloat(window.getComputedStyle(element).fontSize);
+
+  const parentHeight = parseFloat(window.getComputedStyle(element.parentElement).height);
+  
+  while (parseFloat(window.getComputedStyle(element).height) > parentHeight)
+  {
+    size -= 1;
+    element.style.fontSize = size + "px"
+  }
 }
 
 

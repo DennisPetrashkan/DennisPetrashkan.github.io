@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="app.css">
     <title>Epic Horizons Landscaping</title>
     <link rel="icon" type="image/x-icon" href="./resources/logo.png">
@@ -14,23 +15,22 @@
         <div class="header">
             
             <img class="menu" src="./resources/menu.png" alt="Company Banner" onclick="menu()">
-            <h1 class="hidden-title">Epic Horizons Landscaping--North Port</h1>
            
             <div id="nav-menu" class="nav-menu">
                 <ul>
                     <li><a class="main-entry" href="index.html">Home</a></li>
-                    <li class="services-tab"><h5>Services</h5><span id="services-arrow-right" class="services-arrow-right" onclick="toggleServicesNavigation()">⮞</span><span class="services-arrow-down" onclick="toggleServicesNavigation()">&#11167;</span></li>
+                    <li class="services-tab"><h5 class="main-entry">Services</h5><span id="services-arrow-right" class="services-arrow-right" onclick="toggleServicesNavigation()">⮞</span><span class="services-arrow-down" onclick="toggleServicesNavigation()">&#11167;</span></li>
                     <div class="services-navigation">
-                        <li><a style="margin-top: 0;" class="service-entry" href="./pages/lawn-care.html">Lawn Care</a></li>
-                        <li><a class="service-entry" href="./pages/landscaping.html">Landscaping</a></li>
-                        <li><a class="service-entry" href="./pages/pressure-washing.html">Pressure Washing</a></li>
-                        <li><a class="service-entry" href="./pages/tree-work.html">Tree Work</a></li>
-                        <li><a class="service-entry" href="./pages/sod.html">Sod</a></li>
-                        <li><a class="service-entry" href="./pages/irrigation.html">Irrigation</a></li>
+                        <li><a style="margin-top: 0;" class="service-entry" href="lawn-care.html">Lawn Care</a></li>
+                        <li><a class="service-entry" href="landscaping.html">Landscaping</a></li>
+                        <li><a class="service-entry" href="pressure-washing.html">Pressure Washing</a></li>
+                        <li><a class="service-entry" href="tree-work.html">Tree Work</a></li>
+                        <li><a class="service-entry" href="sod.html">Sod</a></li>
+                        <li><a class="service-entry" href="irrigation.html">Irrigation</a></li>
                     </div>
-                    <li><a class="main-entry" href="./pages/posts.html"> Posts </a></li>
-                    <li><a class="main-entry" href="./pages/reviews.html"> Reviews </a></li>
-                    <li><a class="main-entry" href="./pages/Contact.html"> Contact </a></li>
+                    <li><a class="main-entry" href="posts.html"> Posts </a></li>
+                    <li><a class="main-entry" href="reviews.html"> Reviews </a></li>
+                    <li><a class="main-entry" href="Contact.html"> Contact </a></li>
                 </ul>
             </div>
             <img class="banner" src="./resources/banner.png" alt="Company Banner">
@@ -41,7 +41,9 @@
     <!-- Body Section -->
     <div class="body-container"></div>
         <div class="gallery" id="media-list">
-            <a href="tel:19419468403" class="contact-button">Contact Us</a>
+            <div class="contact-button-cont">
+                <a href="tel:19419468403" class="contact-button">Contact Us</a>
+            </div>
         </div>
         <div class="carousel-cont">
             <div class="carousel" data-carousel>
@@ -55,7 +57,7 @@
 
         <!-- Free Quote Section -->
         <section class="quote-form-cont">
-            <h2>Get a <span style="color: #6E9BF0;">Free Quote</span></h2>
+            <h2>Get a &nbsp;<span style="color: #6E9BF0;">Free Quote</span></h2>
             <div class="quote-form">
                 <div class="input-cont">
                     <label for="senderName">Your Name:</label>
@@ -89,85 +91,111 @@
         </section>
 
         <!-- Services Section -->
-        <section class="services">
+        <section class="services-cont">
             <h2>Our Services</h2>
-            <ul>
-                <li>
-                    <a href="./pages/lawn-care.html">
-                        <img src="./resources/lawncare-media.png" alt="Lawn Care">
-                        <h3>Lawn Care</h3>
-                    </a>
-                </li>
-                <li>
-                    <a href="./pages/landscaping.html">
-                        <img src="./resources/landscaping-media.png" alt="Landscaping">
-                        <h3>Landscaping</h3>
-                    </a>
-                </li>
-                <li>
-                    <a href="./pages/pressure-washing.html">
-                        <img src="./resources/pressure-washing-media.png" alt="Pressure Washing/Soft Washing">
-                        <h3>Pressure Washing/Soft Washing</h3>
-                    </a>
-                </li>
-                <li>
-                    <a href="./pages/tree-work.html">
-                        <img src="./resources/tree-work-media.png" alt="Tree Work">
-                            <h3>Tree Work</h3>
-                    </a>
-                </li>
-                <li>
-                    <a href="./pages/sod.html">
-                        <img src="./resources/sod-media.png" alt="Sod Installation">
-                        <h3>Sod Installation</h3>
-                    </a>
-                </li>
-                <li>
-                    <a href="./pages/irrigation.html">
-                        <img src="./resources/irrigation-media.png" alt="Irrigation">
-                        <h3>Irrigation</h3>
-                    </a>
-                </li>
-            </ul>
+            <div class="services">
+                <ul>
+                    <li>
+                        <a href="lawn-care.html">
+                            <img src="./resources/lawncare-media.png" alt="Lawn Care">
+                            <div class="tag-cont">
+                                <h3>Lawn Care</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="landscaping.html">
+                            <img src="./resources/landscaping-media.png" alt="Landscaping">
+                            <div class="tag-cont">
+                                <h3>Landscaping</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pressure-washing.html">
+                            <img src="./resources/pressure-washing-media.png" alt="Pressure Washing/Soft Washing">
+                            <div class="tag-cont">
+                                <h3>Pressure Washing/Soft Washing</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tree-work.html">
+                            <img src="./resources/tree-work-media.png" alt="Tree Work">
+                            <div class="tag-cont">
+                                <h3>Tree Work</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="sod.html">
+                            <img src="./resources/sod-media.png" alt="Sod Installation">
+                            <div class="tag-cont">
+                                <h3>Sod Installation</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="irrigation.html">
+                            <img src="./resources/irrigation-media.png" alt="Irrigation">
+                            <div class="tag-cont">
+                                <h3>Irrigation</h3>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </section>
 
         <!-- Post Section -->
-        <div id="post-list" class="posts">
+        <div class="posts-cont">
             <h2>Posts</h2>
+            <div id="post-list" class="posts">
+                
+            </div>
         </div>
-        <a href="posts.html" class="posts-button">More Posts</a>
+        <div class="posts-button-cont">
+            <a href="posts.html" class="posts-button">More Posts</a>
+        </div>
     </div>
 
     <!-- Footer Section -->
     <footer>
-        <div class="business-hours">
-            <h3>Business Hours</h3>
-            <p>Monday: 7:00 AM - 9:00 PM</p>
-            <p>Tuesday: 7:00 AM - 9:00 PM</p>
-            <p>Wednesday: 7:00 AM - 9:00 PM</p>
-            <p>Thursday: 7:00 AM - 9:00 PM</p>
-            <p>Friday: 7:00 AM - 9:00 PM</p>
-            <p>Saturday: 7:00 AM - 9:00 PM</p>
-            <p>Sunday: Closed</p>
+        <div class="footer-info">
+            <div class="business-hours">
+                <h5>Business Hours</h5>
+                <p>Monday 7:00 AM <br> - 9:00 PM</p>
+                <p>Tuesday 7:00 AM <br> - 9:00 PM</p>
+                <p>Wednesday 7:00 AM <br>- 9:00 PM</p>
+                <p>Thursday 7:00 AM <br>- 9:00 PM</p>
+                <p>Friday 7:00 AM <br>- 9:00 PM</p>
+                <p>Saturday 7:00 AM <br>- 9:00 PM</p>
+                <p>Sunday Closed</p>
+            </div>
+    
+            <div class="logo-section">
+                <img src="./resources/logo.png" alt="Company Logo">
+                <h5>Providing the Epic Solutions</h5>
+            </div>
+    
+            <div class="social-media-cont">
+                <h5>Follow Us</h5>
+                    <div class="social-media">
+                        <a href="https://www.instagram.com/epichorizonslandscaping/">
+                            <img src="./resources/Instagram Logo.png" alt="Connect with us on Instagram">
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61554595514173&mibextid=ZbWKwL">
+                            <img src="./resources/Facebook Logo.png" alt="Connect with us on Facebook">
+                        </a>
+                        <a href="https://g.page/r/CTMK7ZrHugLREBM/">
+                            <img src="./resources/Google Logo.png" alt="Connect with us on Google" >
+                        </a>
+                    </div>
+    
+            </div>
         </div>
-
-        <div class="logo-section">
-            <img src="./resources/logo.png" alt="Company Logo">
-            <h3>Providing the Epic Solutions</h3>
-        </div>
-
-        <div class="social-media">
-            <h3>Follow Us</h3>
-                <a href="https://www.instagram.com/epichorizonslandscaping/">
-                    <img src="./resources/Instagram Logo.png" alt="Connect with us on Instagram">
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61554595514173&mibextid=ZbWKwL">
-                    <img src="./resources/Facebook Logo.png" alt="Connect with us on Facebook">
-                </a>
-                <a href="https://g.page/r/CTMK7ZrHugLREBM/">
-                    <img src="./resources/Google Logo.png" alt="Connect with us on Google" >
-                </a>
-
+        <div class="copywright">
+            <p>© Copyright 2024 Epic Horizons Landscaping</p>
         </div>
     </footer>
     <script src="app.js"></script>

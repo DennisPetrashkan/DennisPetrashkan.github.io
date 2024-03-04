@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+      * {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+head {
+  display: none;
+}
+
+script {
+  display: none;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  color: #000000;
+  overflow-x: hidden;
+}
+
+@media screen and (min-width: 480px) {
+  h1 {
+        font-size: 2.7vw;
+      }
+
+      h2 {
+        font-size: 2.4vw;
+      }
+
+      h3 {
+        font-size: 2.1vw;
+      }
+
+      h4 {
+        font-size: 1.8vw;
+      }
+
+      h5 {
+        font-size: 1.5vw;
+      }
+
+      p {
+        font-size: 1.2vw;
+      }
+
+      .header {
+        background-color: #010A31; 
+        padding: 2vw;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .banner {
+        width: 30vw; 
+        height: auto;
+      }
+
+      .menu {
+        position: absolute;
+        left: 2vw;
+        top: 4vw;
+        width: 3vw;
+        height: auto;
+        cursor: pointer;
+      }
+
+      /* drawer navigation */
+      .nav-menu {
+        position: fixed;
+        z-index: 3;
+        top: 0;
+        left: -19vw;
+        width: 19vw;
+        height: 100%;
+        background-color: #000000; 
+        overflow-x: hidden;
+        transition: 0.5s; /* Add smooth transition effect */
+      }
+
+      .nav-menu ul {
+        list-style: none;
+        padding: 2vw;
+        flex: 1;
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .services-tab{
+        display: flex; 
+        flex-direction: row;
+        margin: 2vw 2vw 2vw 0;
+      }
+
+      .services-navigation {
+        margin-left: 1.5vw;
+        max-height: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: max-height 0.5s ease-out;
+        align-items: flex-start;
+      }
+
+      .service-entry {
+        margin: 1vw 1vw 1vw 0;
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 1.3vw;
+        display: flex;
+        flex-wrap: nowrap;
+        cursor: pointer;
+        font-weight: bold;
+        justify-content: left;
+      }
+
+      .main-entry {
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 1.5vw;
+        display: flex;
+        flex-wrap: nowrap;
+        margin: 2vw 2vw 2vw 0;
+        cursor: pointer;
+        font-weight: bold;
+        justify-content: left;
+      }
+
+      .services-navigation.visible {
+        max-height: 30vw; 
+      }
+
+      .services-arrow-right.visible {
+        opacity: 0; 
+      }
+
+      .services-arrow-down.visible{
+        opacity: 1;
+      }
+
+      .services-arrow-right {
+        position: absolute;
+        opacity: 1;
+        margin-top: 0vw;
+        margin-left: 10vw;
+        font-size: 1.8vw;
+        color:#FFFFFF;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .services-arrow-down {
+        position: absolute;
+        margin-top: 0vw;
+        margin-left: 10vw;
+        opacity: 0;
+        font-size: 1.8vw;
+        color:#FFFFFF;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .nav-menu h5 {
+        padding-top: .3vw;
+        text-decoration: none;
+        color: #fff;  
+        display: flex;
+        margin: 0;
+        cursor: pointer;
+      }
+
+
+      /* Body Styles */
+      .body-container {
+          padding: 1rem;
+          display: flex;
+          justify-content: flex-start;
+      }
+
+      .body-container img{
+        position: absolute;
+        width: 35%;
+        height: auto;
+        border-radius: 15px;
+        right: 4vw;
+        top: 15vw;
+      }
+
+      /* Service Info Styles */
+      .service-info {
+          margin-top: 12vw;
+          margin-left: 5vw;
+          margin-bottom: 4vw;
+          width: 70%;
+          height: auto;
+          padding: 2vw 4vw;
+          background-color: #010A31;
+          color: #ffffff;
+          border-radius: 15px;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .service-title {
+          font-size: 3vw;
+          color: #6E9BF0;
+          margin-bottom: 4vw;
+      }
+
+      .service-description {
+          font-size: 1.5vw;
+          margin-bottom: 10vw;
+          line-height: 1.8;
+          margin-right: 11vw;
+      }
+
+      .service-list {
+          list-style: none;
+          padding: 0;
+          margin-left: 4vw;
+          text-align: left;
+      }
+
+      .service-list li {
+          font-size: 1.5vw;
+          margin-bottom: 1rem;
+      }
+
+       /* footer */
+  .footer-info {
+    margin-top: 3vw;
+    color: #FFFFFF;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  footer {
+    flex-direction: column;
+    background-color: #010A31;
+  }
+  
+  .business-hours p {
+    margin: .5vw;
+    font-size: 1.2vw;
+  }
+  
+  .logo-section {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    margin: 2.3vw;
+  }
+  
+  .social-media-cont {
+    flex: 1;
+    text-align: center;
+    margin: 2.3vw;
+  }
+  
+  .social-media {
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 1;
+    margin: 1vw;
+  }
+  
+  .business-hours {
+    flex: 1;
+    text-align: center;
+    margin: 2.3vw;
+  }
+  
+  .business-hours h5 {
+    margin-bottom: 1.5vw;
+    margin-top: 0;
+  }
+  
+  .social-media-cont h5 {
+    padding: 1vw;
+    margin-top: 0;
+  }
+  
+  .logo-section img {
+    width: 11vw;
+    height: auto;
+  }
+  
+  .logo-section h5 {
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .social-media img {
+    width: 4vw;
+    height: auto;
+    margin: 1vw;
+  }
+  
+  .social-media a {
+    text-decoration: none;
+  }
+
+  .copywright {
+    color: #fff;
+    background-color: #071244;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+   
+
+
+
+
+@media screen and (max-width: 480px) {
+  
+h1 {
+  font-size: 6.5vw;
+}
+
+h2 {
+  font-size: 6vw;
+}
+
+h3 {
+  font-size: 5.5vw;
+}
+
+h4 {
+  font-size: 5vw;
+}
+
+h5 {
+  font-size: 4.5vw;
+}
+
+p {
+  font-size: 4vw;
+}
+
+  
+.header {
+  background-color: #010A31;
+  padding: 2vw;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.banner {
+  width: 40vw;
+  height: auto;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 4vw;
+  margin-left: 2vw;
+  width: 4vw;
+  height: auto;
+  cursor: pointer;
+}
+
+      /* drawer navigation */
+      .nav-menu {
+        position: fixed;
+        z-index: 3;
+        top: 0;
+        left: -40vw;
+        width: 40vw;
+        height: 100%;
+        background-color: #000000; 
+        overflow-x: hidden;
+        transition: 0.5s; /* Add smooth transition effect */
+      }
+
+      .nav-menu ul {
+        list-style: none;
+        padding: 2vw;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+      }
+
+      .services-tab{
+        display: flex; 
+        flex-direction: row;
+        margin: 2vw 2vw 2vw 0;
+      }
+
+      .services-navigation {
+        margin-left: 1.5vw;
+        max-height: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: max-height 0.5s ease-out;
+        align-items: flex-start;
+      }
+
+      .service-entry {
+        margin: .7vw .7vw .7vw 0;
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 3.8vw;
+        display: flex;
+        flex-wrap: nowrap;
+        cursor: pointer;
+        font-weight: bold;
+        justify-content: left;
+      }
+
+      .main-entry {
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 4.5vw;
+        display: flex;
+        flex-wrap: nowrap;
+        margin: 1.1vw 1.1vw 1.1vw 0;
+        cursor: pointer;
+        font-weight: bold;
+        justify-content: left;
+      }
+
+      .services-navigation.visible {
+        max-height: 45vw; 
+      }
+
+      .services-arrow-right.visible {
+        opacity: 0; 
+      }
+
+      .services-arrow-down.visible{
+        opacity: 1;
+      }
+
+      .services-arrow-right {
+        position: absolute;
+        opacity: 1;
+        margin-top: .8vw;
+        margin-left: 22vw;
+        font-size: 2.5vw;
+        color:#FFFFFF;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .services-arrow-down {
+        position: absolute;
+        margin-top: .8vw;
+        margin-left: 22vw;
+        opacity: 0;
+        font-size: 2.5vw;
+        color:#FFFFFF;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .nav-menu h5 {
+        text-decoration: none;
+        color: #fff;  
+        display: flex;
+        margin: 0;
+        cursor: pointer;
+      }
+
+
+      /* Body Styles */
+      .body-container {
+          
+          display: flex;
+          justify-content: flex-start;
+      }
+
+      .body-container img{
+        position: relative;
+        width: 95%;
+        margin: 2vw;
+        height: auto;
+        border-radius: 15px;
+        
+      }
+
+      /* Service Info Styles */
+      .service-info {
+          margin-top: 5vw;
+          margin-left: 2vw;
+          margin-right: 2vw;
+          margin-bottom: 4vw;
+          width: 95%;
+          height: auto;
+          flex-direction: column;
+          text-align: center;
+          padding: 2vw 4vw;
+          background-color: #010A31;
+          color: #ffffff;
+          border-radius: 15px;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .service-title {
+          color: #6E9BF0;
+          margin-bottom: 4vw;
+      }
+
+      .service-description {
+          margin-bottom: 10vw;
+          line-height: 1.8;
+          margin-right: 11vw;
+      }
+
+      .service-list {
+          list-style: none;
+          padding: 0;
+          margin-left: 4vw;
+          text-align: left;
+      }
+
+      .service-list li {
+          margin-bottom: 1rem;
+      }
+
+      /* footer */
+footer {
+  margin-top: 3vw;
+  background-color: #010A31;
+  color: #FFFFFF;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.business-hours p {
+  margin: .5vw;
+  font-size: 3vw;
+}
+
+.logo-section {
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  margin: 2.3vw;
+}
+
+.social-media-cont {
+  flex: 1;
+  text-align: center;
+  margin: 2.3vw;
+}
+
+.social-media {
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 1;
+  margin: 1vw;
+}
+
+.business-hours {
+  flex: 1;
+  text-align: center;
+  margin: 2.3vw;
+}
+
+.business-hours h5 {
+  margin-bottom: 1.5vw;
+  margin-top: 0;
+}
+
+.social-media-cont h5 {
+  padding: 1vw;
+  margin-top: 0;
+}
+
+.logo-section img {
+  width: 20vw;
+  height: auto;
+}
+
+.logo-section p {
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
+.social-media img {
+  width: 6vw;
+  height: auto;
+  margin: 1vw;
+}
+
+.social-media a {
+  text-decoration: none;
+}
+}
+  
+
+
+
+    </style>
+    <title>Lawn Care - Epic Horizons Landscaping</title>
+    <link rel="icon" type="image/x-icon" href="./resources/logo.png">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+      <div class="header">
+          
+          <img class="menu" src="./resources/menu.png" alt="Company Banner" onclick="menu()">
+         
+          <div id="nav-menu" class="nav-menu">
+              <ul>
+                  <li><a class="main-entry" href="index.html">Home</a></li>
+                  <li class="services-tab"><h5>Services</h5><span id="services-arrow-right" class="services-arrow-right" onclick="toggleServicesNavigation()">⮞</span><span class="services-arrow-down" onclick="toggleServicesNavigation()">&#11167;</span></li>
+                  <div class="services-navigation">
+                      <li><a style="margin-top: 0;" class="service-entry" href="lawn-care.html">Lawn Care</a></li>
+                      <li><a class="service-entry" href="landscaping.html">Landscaping</a></li>
+                      <li><a class="service-entry" href="pressure-washing.html">Pressure Washing</a></li>
+                      <li><a class="service-entry" href="tree-work.html">Tree Work</a></li>
+                      <li><a class="service-entry" href="sod.html">Sod</a></li>
+                      <li><a class="service-entry" href="irrigation.html">Irrigation</a></li>
+                  </div>
+                  <li><a class="main-entry" href="posts.html"> Posts </a></li>
+                  <li><a class="main-entry" href="reviews.html"> Reviews </a></li>
+                  <li><a class="main-entry" href="contact.html"> Contact </a></li>
+              </ul>
+          </div>
+          <img class="banner" src="./resources/banner.png" alt="Company Banner">
+      </div>
+  </header>
+
+
+
+    <!-- Body Section -->
+    <div class="body-container">
+
+        <!-- Lawn Care Information -->
+        <img src="./resources/lawncare-media.png" alt="Lawncare in North Port">
+        <section class="service-info container">
+            <h2 class="service-title">Lawn Care Services</h2>
+            <p class="service-description">Transform your lawn into a lush and vibrant masterpiece with our professional lawn care services. Our dedicated team is committed to creating and maintaining healthy, beautiful lawns tailored to your unique needs.</p>
+            <ul class="service-list">
+                <li><strong>Regular Maintenance:</strong> We offer monthly plans, mowing weekly in the summer and biweekly in the winter, ensuring a clean, well-kept lawn year round.</li>
+                <li><strong>Fertilization:</strong> We'll make sure your lawn is getting premium nutrients for optimal growth and green lushness.</li>
+                <li><strong>Weed Control:</strong> We offer both weed control on flower beds, gravel, or driveways and weed control for your lawn.</li>
+                <li><strong>Seasonal Cleanups:</strong> Do you have a dirty yard after yet another hurricane? We'll deal with it.</li>
+                <li><strong>Lawn Mowing:</strong> We provide the highest quality mowing services in our industry. Mowing, trimming, edging, and blowing included.</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="footer-info">
+          <div class="business-hours">
+              <h5>Business Hours</h5>
+              <p>Monday 7:00 AM <br> - 9:00 PM</p>
+              <p>Tuesday 7:00 AM <br> - 9:00 PM</p>
+              <p>Wednesday 7:00 AM <br>- 9:00 PM</p>
+              <p>Thursday 7:00 AM <br>- 9:00 PM</p>
+              <p>Friday 7:00 AM <br>- 9:00 PM</p>
+              <p>Saturday 7:00 AM <br>- 9:00 PM</p>
+              <p>Sunday Closed</p>
+          </div>
+  
+          <div class="logo-section">
+              <img src="./resources/logo.png" alt="Company Logo">
+              <h5>Providing the Epic Solutions</h5>
+          </div>
+  
+          <div class="social-media-cont">
+              <h5>Follow Us</h5>
+                  <div class="social-media">
+                      <a href="https://www.instagram.com/epichorizonslandscaping/">
+                          <img src="./resources/Instagram Logo.png" alt="Connect with us on Instagram">
+                      </a>
+                      <a href="https://www.facebook.com/profile.php?id=61554595514173&mibextid=ZbWKwL">
+                          <img src="./resources/Facebook Logo.png" alt="Connect with us on Facebook">
+                      </a>
+                      <a href="https://g.page/r/CTMK7ZrHugLREBM/">
+                          <img src="./resources/Google Logo.png" alt="Connect with us on Google" >
+                      </a>
+                  </div>
+  
+          </div>
+      </div>
+      <div class="copywright">
+          <p>© Copyright 2024 Epic Horizons Landscaping</p>
+      </div>
+  </footer>
+  <script>
+        
+    function menu() {
+      var navMenu = document.getElementById('nav-menu');
+      navMenu.style.left = '0';
+      document.addEventListener('click', closeMenuOutsideClick);
+      event.stopPropagation();
+    }
+
+    function closeMenuOutsideClick(event) {
+      var navMenu = document.getElementById('nav-menu');
+      var rightArrow = document.getElementById("services-arrow-right");
+      if (!navMenu.contains(event.target)) {
+          navMenu.style.left = '-40vw';
+          document.removeEventListener('click', closeMenuOutsideClick);
+          if (window.getComputedStyle(rightArrow).opacity == 0){
+            toggleServicesNavigation()
+          }
+      }
+    }
+
+    function toggleServicesNavigation() {
+      const servicesNavigation = document.querySelector('.services-navigation');
+      const downArrow = document.querySelector('.services-arrow-down');
+      const rightArrow = document.querySelector('.services-arrow-right');
+      servicesNavigation.classList.toggle('visible');
+      rightArrow.classList.toggle('visible');
+      downArrow.classList.toggle('visible');
+    }
+    
+  </script>
+</body>
+</html>

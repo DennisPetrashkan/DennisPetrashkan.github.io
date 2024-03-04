@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+head {
+  display: none;
+}
+
+script {
+  display: none;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  color: #000000;
+  overflow-x: hidden;
+}
+        @media screen and (min-width: 480px) {
+
+          h1 {
+        font-size: 2.7vw;
+      }
+
+      h2 {
+        font-size: 2.4vw;
+      }
+
+      h3 {
+        font-size: 2.1vw;
+      }
+
+      h4 {
+        font-size: 1.8vw;
+      }
+
+      h5 {
+        font-size: 1.5vw;
+      }
+
+      p {
+        font-size: 1.2vw;
+      }
+
+      .header {
+        background-color: #010A31; 
+        padding: 2vw;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .banner {
+        width: 30vw; 
+        height: auto;
+      }
+
+      .menu {
+        position: absolute;
+        left: 2vw;
+        top: 4vw;
+        width: 3vw;
+        height: auto;
+        cursor: pointer;
+      }
+
+      /* drawer navigation */
+      .nav-menu {
+        position: fixed;
+        z-index: 3;
+        top: 0;
+        left: -19vw;
+        width: 19vw;
+        height: 100%;
+        background-color: #000000; 
+        overflow-x: hidden;
+        transition: 0.5s; /* Add smooth transition effect */
+      }
+
+      .nav-menu ul {
+        list-style: none;
+        padding: 2vw;
+        flex: 1;
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .services-tab{
+        display: flex; 
+        flex-direction: row;
+        margin: 2vw 2vw 2vw 0;
+      }
+
+      .services-navigation {
+        margin-left: 1.5vw;
+        max-height: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: max-height 0.5s ease-out;
+        align-items: flex-start;
+      }
+
+      .service-entry {
+        margin: 1vw 1vw 1vw 0;
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 1.3vw;
+        display: flex;
+        flex-wrap: nowrap;
+        cursor: pointer;
+        font-weight: bold;
+        justify-content: left;
+      }
+
+      .main-entry {
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 1.5vw;
+        display: flex;
+        flex-wrap: nowrap;
+        margin: 2vw 2vw 2vw 0;
+        cursor: pointer;
+        font-weight: bold;
+        justify-content: left;
+      }
+
+      .services-navigation.visible {
+        max-height: 30vw; 
+      }
+
+      .services-arrow-right.visible {
+        opacity: 0; 
+      }
+
+      .services-arrow-down.visible{
+        opacity: 1;
+      }
+
+      .services-arrow-right {
+        position: absolute;
+        opacity: 1;
+        margin-top: 0vw;
+        margin-left: 10vw;
+        font-size: 1.8vw;
+        color:#FFFFFF;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .services-arrow-down {
+        position: absolute;
+        margin-top: 0vw;
+        margin-left: 10vw;
+        opacity: 0;
+        font-size: 1.8vw;
+        color:#FFFFFF;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .nav-menu h5 {
+        padding-top: .3vw;
+        text-decoration: none;
+        color: #fff;  
+        display: flex;
+        margin: 0;
+        cursor: pointer;
+      }
+
+
+        /* posts */
+        .posts-cont {
+          flex-direction: column;
+          align-items: center;
+        }
+        .posts {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        }
+
+        .post {
+        position: relative;
+        background-color: #010A31;
+        color:#FFFFFF;
+        border-radius: 15px;
+        margin: .5vw;
+        padding: 1.5vw;
+        width: 65%;
+        box-sizing: border-box;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        }
+
+        .postMediaCont {
+        flex: 2;
+        flex-wrap: wrap;
+        flex-direction: row;
+        display: flex;
+        overflow: hidden;
+        justify-content: center;
+        }
+
+        .postWords {
+        flex: 1;
+        flex-direction: column;
+        padding: 2vw;
+        justify-content: center;
+        }
+
+        .postMedia {
+        border-radius: 15px;
+        padding: .5rem;
+        max-width: 100%; 
+        max-height: 20vw; 
+        }
+
+        .postSummary {
+        margin: 0;
+        }
+
+        .post p {
+        font-size: 1.5vw;
+        }
+
+        .posts-button {
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        margin-left: 30vw;
+        margin-right: 30vw;
+        border-radius: 15px;
+        margin-top: 3vw;
+        margin-bottom: 4vw;
+        color: #000000;
+        border: 2px solid #000000;
+        padding: 10px 20px;
+        font-size: 2vw;
+        text-decoration: none; /* Remove underline */
+        }
+
+        .posts-button:hover {
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+              /* footer */
+  .footer-info {
+    margin-top: 3vw;
+    color: #FFFFFF;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  footer {
+    flex-direction: column;
+    background-color: #010A31;
+  }
+  
+  .business-hours p {
+    margin: .5vw;
+    font-size: 1.2vw;
+  }
+  
+  .logo-section {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    margin: 2.3vw;
+  }
+  
+  .social-media-cont {
+    flex: 1;
+    text-align: center;
+    margin: 2.3vw;
+  }
+  
+  .social-media {
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 1;
+    margin: 1vw;
+  }
+  
+  .business-hours {
+    flex: 1;
+    text-align: center;
+    margin: 2.3vw;
+  }
+  
+  .business-hours h5 {
+    margin-bottom: 1.5vw;
+    margin-top: 0;
+  }
+  
+  .social-media-cont h5 {
+    padding: 1vw;
+    margin-top: 0;
+  }
+  
+  .logo-section img {
+    width: 11vw;
+    height: auto;
+  }
+  
+  .logo-section h5 {
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .social-media img {
+    width: 4vw;
+    height: auto;
+    margin: 1vw;
+  }
+  
+  .social-media a {
+    text-decoration: none;
+  }
+
+  .copywright {
+    color: #fff;
+    background-color: #071244;
+    flex-direction: row;
+    justify-content: center;
+  }
+      }
+
+
+
+
+
+
+
+      @media screen and (max-width: 480px) {
+        h1 {
+  font-size: 6vw;
+}
+
+h2 {
+  font-size: 5.5vw;
+}
+
+h3 {
+  font-size: 5vw;
+}
+
+h4 {
+  font-size: 4.5vw;
+}
+
+h5 {
+  font-size: 4vw;
+}
+
+p {
+  font-size: 3.5vw;
+}
+
+  
+.header {
+  background-color: #010A31;
+  padding: 2vw;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.banner {
+  width: 40vw;
+  height: auto;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 4vw;
+  margin-left: 2vw;
+  width: 4vw;
+  height: auto;
+  cursor: pointer;
+}
+
+     /* drawer navigation */
+     .nav-menu {
+        position: fixed;
+        z-index: 3;
+        top: 0;
+        left: -32vw;
+        width: 32vw;
+        height: 100%;
+        background-color: #000000; 
+        overflow-x: hidden;
+        transition: 0.5s; /* Add smooth transition effect */
+      }
+
+      .nav-menu ul {
+        list-style: none;
+        padding: 2vw;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+      }
+
+      .services-tab{
+        display: flex; 
+        flex-direction: row;
+        margin: 2vw 2vw 2vw 0;
+      }
+
+      .services-navigation {
+        margin-left: 1.5vw;
+        max-height: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: max-height 0.5s ease-out;
+        align-items: flex-start;
+      }
+
+      .service-entry {
+        margin: .7vw .7vw .7vw 0;
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 3.8vw;
+        display: flex;
+        flex-wrap: nowrap;
+        cursor: pointer;
+        font-weight: bold;
+        justify-content: left;
+      }
+
+      .main-entry {
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 4.5vw;
+        display: flex;
+        flex-wrap: nowrap;
+        margin: 1.1vw 1.1vw 1.1vw 0;
+        cursor: pointer;
+        font-weight: bold;
+        justify-content: left;
+      }
+
+      .main-entry:hover {
+        font-size: 4.7vw;
+      }
+      
+      .service-entry:hover {
+        font-size: 4.0vw;
+      }
+
+      .services-navigation.visible {
+        max-height: 45vw; 
+      }
+
+      .services-arrow-right.visible {
+        opacity: 0; 
+      }
+
+      .services-arrow-down.visible{
+        opacity: 1;
+      }
+
+      .services-arrow-right {
+        position: absolute;
+        opacity: 1;
+        margin-top: .8vw;
+        margin-left: 22vw;
+        font-size: 3.5vw;
+        color:#FFFFFF;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .services-arrow-down {
+        position: absolute;
+        margin-top: .8vw;
+        margin-left: 22vw;
+        opacity: 0;
+        font-size: 3.5vw;
+        color:#FFFFFF;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .nav-menu h5 {
+        text-decoration: none;
+        color: #fff;  
+        display: flex;
+        margin: 0;
+        cursor: pointer;
+      }
+
+       /* posts */
+      .posts-cont {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        margin: .5vw;
+       }
+
+      .posts {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
+}
+
+.post {
+  position: relative;
+  background-color: #FFFFFF;
+  color: #333;
+  border-radius: 1.5vw;
+  width: 95%;
+  margin: .5vw;
+  padding: 1vw;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-direction: column;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.postMediaCont {
+  flex-direction: row;
+  padding: 1vw;
+  margin-bottom: 1vw;
+  justify-content: start;
+  overflow-x: auto;
+}
+
+.postWords {
+  flex-direction: column;
+  padding: 1vw;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.postMedia {
+  border-radius: 1.5vw;
+  padding: .5vw;
+  height: auto;
+  width: 100%;
+}
+
+.postSummary {
+  margin: 0;
+}
+
+       /* footer */
+footer {
+  margin-top: 3vw;
+  background-color: #010A31;
+  color: #FFFFFF;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.business-hours p {
+  margin: .5vw;
+  font-size: 3vw;
+}
+
+.logo-section {
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  margin: 2.3vw;
+}
+
+.social-media-cont {
+  flex: 1;
+  text-align: center;
+  margin: 2.3vw;
+}
+
+.social-media {
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 1;
+  margin: 1vw;
+}
+
+.business-hours {
+  flex: 1;
+  text-align: center;
+  margin: 2.3vw;
+}
+
+.business-hours h5 {
+  margin-bottom: 1.5vw;
+  margin-top: 0;
+}
+
+.social-media-cont h5 {
+  padding: 1vw;
+  margin-top: 0;
+}
+
+.logo-section img {
+  width: 20vw;
+  height: auto;
+}
+
+.logo-section p {
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
+.social-media img {
+  width: 6vw;
+  height: auto;
+  margin: 1vw;
+}
+
+.social-media a {
+  text-decoration: none;
+}
+      }
+    </style>
+    <title>Posts - Epic Horizons Landscaping</title>
+    <link rel="icon" type="image/x-icon" href="./resources/logo.png">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+      <div class="header">
+          
+          <img class="menu" src="./resources/menu.png" alt="Company Banner" onclick="menu()">
+         
+          <div id="nav-menu" class="nav-menu">
+              <ul>
+                  <li><a class="main-entry" href="index.html">Home</a></li>
+                  <li class="services-tab"><h5 class="main-entry">Services</h5><span id="services-arrow-right" class="services-arrow-right" onclick="toggleServicesNavigation()">⮞</span><span class="services-arrow-down" onclick="toggleServicesNavigation()">&#11167;</span></li>
+                  <div class="services-navigation">
+                      <li><a style="margin-top: 0;" class="service-entry" href="lawn-care.html">Lawn Care</a></li>
+                      <li><a class="service-entry" href="landscaping.html">Landscaping</a></li>
+                      <li><a class="service-entry" href="pressure-washing.html">Pressure Washing</a></li>
+                      <li><a class="service-entry" href="tree-work.html">Tree Work</a></li>
+                      <li><a class="service-entry" href="sod.html">Sod</a></li>
+                      <li><a class="service-entry" href="irrigation.html">Irrigation</a></li>
+                  </div>
+                  <li><a class="main-entry" href="posts.html"> Posts </a></li>
+                  <li><a class="main-entry" href="reviews.html"> Reviews </a></li>
+                  <li><a class="main-entry" href="Contact.html"> Contact </a></li>
+              </ul>
+          </div>
+          <img class="banner" src="./resources/banner.png" alt="Company Banner">
+      </div>
+  </header>
+
+    <div class="posts-cont">
+      <h2>Posts</h2>
+      <div id="post-list" class="posts">
+        
+      </div>
+    </div>
+    <!-- Footer Section -->
+    <footer>
+      <div class="footer-info">
+          <div class="business-hours">
+              <h5>Business Hours</h5>
+              <p>Monday 7:00 AM <br> - 9:00 PM</p>
+              <p>Tuesday 7:00 AM <br> - 9:00 PM</p>
+              <p>Wednesday 7:00 AM <br>- 9:00 PM</p>
+              <p>Thursday 7:00 AM <br>- 9:00 PM</p>
+              <p>Friday 7:00 AM <br>- 9:00 PM</p>
+              <p>Saturday 7:00 AM <br>- 9:00 PM</p>
+              <p>Sunday Closed</p>
+          </div>
+  
+          <div class="logo-section">
+              <img src="./resources/logo.png" alt="Company Logo">
+              <h5>Providing the Epic Solutions</h5>
+          </div>
+  
+          <div class="social-media-cont">
+              <h5>Follow Us</h5>
+                  <div class="social-media">
+                      <a href="https://www.instagram.com/epichorizonslandscaping/">
+                          <img src="./resources/Instagram Logo.png" alt="Connect with us on Instagram">
+                      </a>
+                      <a href="https://www.facebook.com/profile.php?id=61554595514173&mibextid=ZbWKwL">
+                          <img src="./resources/Facebook Logo.png" alt="Connect with us on Facebook">
+                      </a>
+                      <a href="https://g.page/r/CTMK7ZrHugLREBM/">
+                          <img src="./resources/Google Logo.png" alt="Connect with us on Google" >
+                      </a>
+                  </div>
+  
+          </div>
+      </div>
+      <div class="copywright">
+          <p>© Copyright 2024 Epic Horizons Landscaping</p>
+      </div>
+  </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const postElement = document.getElementById('post-list');
+
+            fetch('http://localhost:8080/getposts')
+            .then(response => response.json())
+            .then(posts => {
+                postList = posts.localPosts
+                postList.forEach(post => {
+                    let postMedia = ``
+                    post.media.forEach(media => {
+                        if (media.mediaFormat == "PHOTO"){
+                            postMedia  += `<img class="postMedia" src="${media.googleUrl}" alt="landscaping in North Port">`; 
+                        }else{
+                        postMedia += 
+                            `<video class="postMedia" controls="controls">
+                            <source src="${media.googleUrl}=dv" type="video/mp4">
+                            </video>`
+                        }                     
+                    })
+                    postElement.insertAdjacentHTML('beforeend', 
+                                            `<li class="post">
+                                                <div class="postMediaCont">
+                                                    ${postMedia}
+                                                </div>
+                                                <div class="postWords"> 
+                                                <p class="postSummary">${post.summary} <br> ${post.updateTime.slice(0, 10)}</p>
+                                                </div>
+                                            </li>`);
+                });
+               
+            });
+        
+      });
+
+      function menu() {
+            var navMenu = document.getElementById('nav-menu');
+            navMenu.style.left = '0';
+            console.log("toggled menu")
+            document.addEventListener('click', closeMenuOutsideClick);
+            event.stopPropagation();
+        }
+
+        function closeMenuOutsideClick(event) {
+            var navMenu = document.getElementById('nav-menu');
+
+            if (!navMenu.contains(event.target)) {
+                navMenu.style.left = '-19vw';
+                document.removeEventListener('click', closeMenuOutsideClick);
+            }
+        }
+
+                
+        function toggleServicesNavigation() {
+          const servicesNavigation = document.querySelector('.services-navigation');
+          const downArrow = document.querySelector('.services-arrow-down');
+          const rightArrow = document.querySelector('.services-arrow-right');
+          servicesNavigation.classList.toggle('visible');
+          rightArrow.classList.toggle('visible');
+          downArrow.classList.toggle('visible');
+        }
+
+    </script>
+</body>
+</html>

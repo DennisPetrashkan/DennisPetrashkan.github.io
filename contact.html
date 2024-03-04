@@ -4,12 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-      *, *::before, *::after {
-        box-sizing: border-box;
-      }
+      * {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+head {
+  display: none;
+}
+
+script {
+  display: none;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  color: #000000;
+  overflow-x: hidden;
+}
+
+      @media screen and (min-width: 480px) {
 
       h1 {
-        font-size: 2.7;
+        font-size: 2.7vw;
       }
 
       h2 {
@@ -35,6 +56,8 @@
       .header {
         background-color: #010A31; 
         padding: 2vw;
+        flex-direction: row;
+        justify-content: center;
         text-align: center;
       }
 
@@ -67,10 +90,10 @@
 
       .nav-menu ul {
         list-style: none;
-        padding: 20px;
-        display: flex;
+        padding: 2vw;
         flex: 1;
         flex-direction: column;
+        align-items: start;
       }
 
       .services-tab{
@@ -177,6 +200,11 @@
           text-align: center;
       }
 
+      .icon-cont {
+        flex-direction: column;
+        align-items: center;
+      }
+
       .contact-info {
         display: flex;
         flex-direction: row;
@@ -185,6 +213,10 @@
 
       .contact-info-block-1 {
         flex: 2;
+      }
+
+      .contact-info-block-1 p {
+        flex-direction: row;
       }
 
       .contact-info-block-2 {
@@ -249,10 +281,12 @@
 
       .contact-form-cont textarea {
         width: 75%;
+        border-radius: 2px;
       }
 
       .contact-form-cont input {
         width: 75%;
+        border-radius: 2px;
       }
 
       .contact-info-cont a {
@@ -269,74 +303,479 @@
 
       /* contact form button */
       button {
-          background-color: #333;
-          color: white;
-          border: none;
-          padding: 10px 20px;
-          border-radius: 5px;
-          cursor: pointer;
+  color: #010A31;
+  border: 2px solid #010A31;
+  background-color: #fff;
+  padding: 1vw 2vw;
+  flex-direction: row;
+  width: 20vw;
+  border-radius: 15px;
+  cursor: pointer;
+  text-align: center;
+  justify-content: center;
       }
 
-      .button-cont {
-        text-align: center;
-        width: 100%;
+.button-cont {
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+
+}
+
+button:hover {
+  background-color: #010A31;
+  color: #FFFFFF;
+}
+
+/* footer */
+.footer-info {
+    margin-top: 3vw;
+    color: #FFFFFF;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  footer {
+    flex-direction: column;
+    background-color: #010A31;
+  }
+  
+  .business-hours p {
+    margin: .5vw;
+    font-size: 1.2vw;
+  }
+  
+  .logo-section {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    margin: 2.3vw;
+  }
+  
+  .social-media-cont {
+    flex: 1;
+    text-align: center;
+    margin: 2.3vw;
+  }
+  
+  .social-media {
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 1;
+    margin: 1vw;
+  }
+  
+  .business-hours {
+    flex: 1;
+    text-align: center;
+    margin: 2.3vw;
+  }
+  
+  .business-hours h5 {
+    margin-bottom: 1.5vw;
+    margin-top: 0;
+  }
+  
+  .social-media-cont h5 {
+    padding: 1vw;
+    margin-top: 0;
+  }
+  
+  .logo-section img {
+    width: 11vw;
+    height: auto;
+  }
+  
+  .logo-section h5 {
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .social-media img {
+    width: 4vw;
+    height: auto;
+    margin: 1vw;
+  }
+  
+  .social-media a {
+    text-decoration: none;
+  }
+
+  .copywright {
+    color: #fff;
+    background-color: #071244;
+    flex-direction: row;
+    justify-content: center;
+  }
+    }
+
+    @media screen and (max-width: 480px) {
+      h1 {
+  font-size: 6.5vw;
+}
+
+h2 {
+  font-size: 6vw;
+}
+
+h3 {
+  font-size: 5.5vw;
+}
+
+h4 {
+  font-size: 5vw;
+}
+
+h5 {
+  font-size: 4.5vw;
+}
+
+p {
+  font-size: 4vw;
+}
+
+  
+.header {
+  background-color: #010A31;
+  padding: 2vw;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.banner {
+  width: 40vw;
+  height: auto;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 4vw;
+  margin-left: 2vw;
+  width: 4vw;
+  height: auto;
+  cursor: pointer;
+}
+
+      /* drawer navigation */
+      .nav-menu {
+        position: fixed;
+        z-index: 3;
+        top: 0;
+        left: -40vw;
+        width: 40vw;
+        height: 100%;
+        background-color: #000000; 
+        overflow-x: hidden;
+        transition: 0.5s; /* Add smooth transition effect */
       }
 
-      
-      button:hover {
-          background-color: #555;
-      }
-
-
-      /* footer */
-      footer {
-        background-color: #010A31; 
-        color: #FFFFFF; 
-        padding: 30px;
+      .nav-menu ul {
+        list-style: none;
+        padding: 2vw;
         display: flex;
-        justify-content: space-between;
+        flex: 1;
+        flex-direction: column;
       }
 
-      .logo-section{
-        width: 30%;
-        text-align: center; 
+      .services-tab{
+        display: flex; 
+        flex-direction: row;
+        margin: 2vw 2vw 2vw 0;
       }
 
-      .social-media {
-        width: 30%;
-        text-align: center; 
-        justify-content: space-between;
+      .services-navigation {
+        margin-left: 1.5vw;
+        max-height: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: max-height 0.5s ease-out;
+        align-items: flex-start;
       }
 
-      .social-media a {
+      .service-entry {
+        margin: .7vw .7vw .7vw 0;
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 3.8vw;
+        display: flex;
+        flex-wrap: nowrap;
+        cursor: pointer;
+        font-weight: bold;
+        justify-content: left;
+      }
+
+      .main-entry {
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 4.5vw;
+        display: flex;
+        flex-wrap: nowrap;
+        margin: 1.1vw 1.1vw 1.1vw 0;
+        cursor: pointer;
+        font-weight: bold;
+        justify-content: left;
+      }
+
+      .services-navigation.visible {
+        max-height: 45vw; 
+      }
+
+      .services-arrow-right.visible {
+        opacity: 0; 
+      }
+
+      .services-arrow-down.visible{
+        opacity: 1;
+      }
+
+      .services-arrow-right {
+        position: absolute;
+        opacity: 1;
+        margin-top: .8vw;
+        margin-left: 22vw;
+        font-size: 2.5vw;
+        color:#FFFFFF;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .services-arrow-down {
+        position: absolute;
+        margin-top: .8vw;
+        margin-left: 22vw;
+        opacity: 0;
+        font-size: 2.5vw;
+        color:#FFFFFF;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .nav-menu h5 {
+        text-decoration: none;
+        color: #fff;  
+        display: flex;
+        margin: 0;
+        cursor: pointer;
+      }
+
+      /* Body Styles */
+
+      .contact-info-cont {
+          background-color: white;
+          padding: 2vw;
+          margin: 1vw;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          text-align: center;
+      }
+
+      .contact-info {
+        flex-direction: column;
+        margin-top: 1vw;
+      }
+
+      .contact-info-block-1 {
+        flex: 2;
+      }
+
+      .contact-info-block-2 {
+        flex-direction: column;
+        flex: 1;
+        align-items: center;
+        margin-right: 4vw;
+      }
+
+      .contact-info-block-2 p {
+        margin: .8vw ;
+      }
+
+      .contact-info-element {
+        flex-direction: row;
+        
+        justify-content: flex-start;
+      }
+
+      .contact-info-element p {
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+
+      .social-media-body a {
         text-decoration: none;
       }
 
-      .business-hours {
-        width: 30%;
+      .social-media-body {
         text-align: center; 
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 5vw;
       }
 
-      .social-media h3 {
-        padding: 1rem;
-      }
-
-      .logo-section img {
-        width: 150px; 
-        height: auto;
-      }
-
-      .social-media img {
+      .social-media-body img {
         width: 50px;
         height: auto;
         margin: 1rem;
       }
 
-      .business-hours h3,
-      .slogan-section h3,
-      .social-media h3 {
-        font-size: 1.5rem;
+      .icon-cont {
+        flex-direction: column;
+        align-items: center;
       }
+
+      /* contact form */
+      .contact-form-cont {
+        background-color: white;
+  padding: 1vw;
+  margin: 1vw;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+      }
+    
+      .contact-form {
+        display: flex;
+  flex-direction: column;
+  margin-bottom: 1vw;
+  text-align: left;
+      }
+
+      .contact-form-cont label {
+        font-weight: bold;
+      }
+
+      .contact-form-cont textarea {
+        width: 75%;
+        border-radius: 2px;
+      }
+
+      .contact-form-cont input {
+        width: 75%;
+        border-radius: 2px;
+      }
+
+      .contact-info-cont a {
+        text-decoration: none;
+      }
+
+      .input-cont {
+        display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+  margin: 1vw;
+      }
+
+      button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 1vw 2vw;
+  flex-direction: row;
+  width: 40vw;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  justify-content: center;
+}
+
+.button-cont {
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+
+}
+
+button:hover {
+  background-color: #555;
+}
+
+
+       /* footer */
+footer {
+  margin-top: 3vw;
+  background-color: #010A31;
+  color: #FFFFFF;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.business-hours p {
+  margin: .5vw;
+  font-size: 3vw;
+}
+
+.logo-section {
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  margin: 2.3vw;
+}
+
+.social-media-cont {
+  flex: 1;
+  text-align: center;
+  margin: 2.3vw;
+}
+
+.social-media {
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 1;
+  margin: 1vw;
+}
+
+.business-hours {
+  flex: 1;
+  text-align: center;
+  margin: 2.3vw;
+}
+
+.business-hours h5 {
+  margin-bottom: 1.5vw;
+  margin-top: 0;
+}
+
+.social-media-cont h5 {
+  padding: 1vw;
+  margin-top: 0;
+}
+
+.logo-section img {
+  width: 20vw;
+  height: auto;
+}
+
+.logo-section p {
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
+.social-media img {
+  width: 6vw;
+  height: auto;
+  margin: 1vw;
+}
+
+.social-media a {
+  text-decoration: none;
+}
+    }
     </style>
     <title>Contact Us - Epic Horizons Landscaping</title>
     <link rel="icon" type="image/x-icon" href="./resources/logo.png">
@@ -347,14 +786,14 @@
     <header>
       <div class="header">
           
-          <img class="menu" src="../resources/menu.png" alt="Company Banner" onclick="menu()">
+          <img class="menu" src="./resources/menu.png" alt="Company Banner" onclick="menu()">
          
           <div id="nav-menu" class="nav-menu">
               <ul>
                   <li><a class="main-entry" href="index.html">Home</a></li>
                   <li class="services-tab"><h5>Services</h5><span id="services-arrow-right" class="services-arrow-right" onclick="toggleServicesNavigation()">⮞</span><span class="services-arrow-down" onclick="toggleServicesNavigation()">&#11167;</span></li>
                   <div class="services-navigation">
-                      <li><a class="service-entry" href="lawn-care.html">Lawn Care</a></li>
+                      <li><a style="margin-top: 0;" class="service-entry" href="lawn-care.html">Lawn Care</a></li>
                       <li><a class="service-entry" href="landscaping.html">Landscaping</a></li>
                       <li><a class="service-entry" href="pressure-washing.html">Pressure Washing</a></li>
                       <li><a class="service-entry" href="tree-work.html">Tree Work</a></li>
@@ -366,9 +805,10 @@
                   <li><a class="main-entry" href="contact.html"> Contact </a></li>
               </ul>
           </div>
-          <img class="banner" src="../resources/banner.png" alt="Company Banner">
+          <img class="banner" src="./resources/banner.png" alt="Company Banner">
       </div>
-    </header>
+  </header>
+
 
     
     <section class="contact-info-cont">
@@ -376,7 +816,7 @@
       <div class="contact-info">
         <div class="contact-info-block-1"> 
           <div class="contact-info-element">
-            <p><strong>Business Name:</strong> Epic Horizons Landscaping</p>
+            <p><strong>Business Name: &nbsp;</strong> Epic Horizons Landscaping</p>
           </div>
           <div class="contact-info-element">
             <p><strong>Phone: &nbsp;</strong></p>
@@ -397,21 +837,21 @@
 
       <div class="social-media-body">
         <div class="icon-cont">
-          <img src="../resources/Instagram Logo.png" alt="Connect with us on Instagram">
+          <img src="./resources/Instagram Logo.png" alt="Connect with us on Instagram">
           <a href="https://www.instagram.com/epichorizonslandscaping/"> 
             <p>epichorizonslandscaping</p>
           </a>
         </div>
           
         <div class="icon-cont">
-          <img src="../resources/Facebook Logo.png" alt="Connect with us on Facebook">
+          <img src="./resources/Facebook Logo.png" alt="Connect with us on Facebook">
           <a href="https://www.facebook.com/profile.php?id=61554595514173&mibextid=ZbWKwL">
             <p>Epic Horizons Landscaping</p>
           </a>
         </div>
 
         <div class="icon-cont">
-          <img src="../resources/Google Logo.png" alt="Connect with us on Google" >
+          <img src="./resources/Google Logo.png" alt="Connect with us on Google" >
           <a href="https://g.page/r/CTMK7ZrHugLREBM/">
             <p>Epic Horizons Landscaping--North Port</p>
           </a>
@@ -446,34 +886,41 @@
 
     <!-- Footer Section -->
     <footer>
-      <div class="business-hours">
-          <h3>Business Hours</h3>
-          <p>Monday: 7:00 AM - 9:00 PM</p>
-          <p>Tuesday: 7:00 AM - 9:00 PM</p>
-          <p>Wednesday: 7:00 AM - 9:00 PM</p>
-          <p>Thursday: 7:00 AM - 9:00 PM</p>
-          <p>Friday: 7:00 AM - 9:00 PM</p>
-          <p>Saturday: 7:00 AM - 9:00 PM</p>
-          <p>Sunday: Closed</p>
+      <div class="footer-info">
+          <div class="business-hours">
+              <h5>Business Hours</h5>
+              <p>Monday 7:00 AM <br> - 9:00 PM</p>
+              <p>Tuesday 7:00 AM <br> - 9:00 PM</p>
+              <p>Wednesday 7:00 AM <br>- 9:00 PM</p>
+              <p>Thursday 7:00 AM <br>- 9:00 PM</p>
+              <p>Friday 7:00 AM <br>- 9:00 PM</p>
+              <p>Saturday 7:00 AM <br>- 9:00 PM</p>
+              <p>Sunday Closed</p>
+          </div>
+  
+          <div class="logo-section">
+              <img src="./resources/logo.png" alt="Company Logo">
+              <h5>Providing the Epic Solutions</h5>
+          </div>
+  
+          <div class="social-media-cont">
+              <h5>Follow Us</h5>
+                  <div class="social-media">
+                      <a href="https://www.instagram.com/epichorizonslandscaping/">
+                          <img src="./resources/Instagram Logo.png" alt="Connect with us on Instagram">
+                      </a>
+                      <a href="https://www.facebook.com/profile.php?id=61554595514173&mibextid=ZbWKwL">
+                          <img src="./resources/Facebook Logo.png" alt="Connect with us on Facebook">
+                      </a>
+                      <a href="https://g.page/r/CTMK7ZrHugLREBM/">
+                          <img src="./resources/Google Logo.png" alt="Connect with us on Google" >
+                      </a>
+                  </div>
+  
+          </div>
       </div>
-
-      <div class="logo-section">
-          <img src="../resources/logo.png" alt="Company Logo">
-          <h3>Providing the Epic Solutions</h3>
-      </div>
-
-      <div class="social-media">
-        <h3>Follow Us</h3>
-            <a href="https://www.instagram.com/epichorizonslandscaping/">
-                <img src="../resources/Instagram Logo.png" alt="Connect with us on Instagram">
-            </a>
-            <a href="https://www.facebook.com/profile.php?id=61554595514173&mibextid=ZbWKwL">
-                <img src="../resources/Facebook Logo.png" alt="Connect with us on Facebook">
-            </a>
-            <a href="https://g.page/r/CTMK7ZrHugLREBM/">
-                <img src="../resources/Google Logo.png" alt="Connect with us on Google" >
-            </a>
-
+      <div class="copywright">
+          <p>© Copyright 2024 Epic Horizons Landscaping</p>
       </div>
   </footer>
   <script>
@@ -488,7 +935,7 @@
       var navMenu = document.getElementById('nav-menu');
       var rightArrow = document.getElementById("services-arrow-right");
       if (!navMenu.contains(event.target)) {
-          navMenu.style.left = '-19vw';
+          navMenu.style.left = '-40vw';
           document.removeEventListener('click', closeMenuOutsideClick);
           if (window.getComputedStyle(rightArrow).opacity == 0){
             toggleServicesNavigation()
