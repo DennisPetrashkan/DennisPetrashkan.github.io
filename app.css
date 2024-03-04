@@ -1128,10 +1128,11 @@ button:hover {
 
 
 /* Services Section */
-.services {
+.services-cont {
   text-align: center;
   margin: 0;
 }
+
 
 .services ul {
   list-style: none;
@@ -1141,6 +1142,9 @@ button:hover {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  padding-inline-start: 0px;
+  margin-left: 0px;
+  padding-left: 0;
 }
 
 .services h3 {
@@ -1159,7 +1163,7 @@ button:hover {
   position: relative;
   margin: 0;
   display: flex;
-  width: 30%;
+  width: 33%;
   padding: 0;
   justify-content: space-between;
 }
@@ -1269,7 +1273,7 @@ button:hover {
   color: #FFFFFF;
 }
   /* footer */
-  footer {
+  .footer-info {
     margin-top: 3vw;
     background-color: #010A31;
     color: #FFFFFF;
@@ -1278,6 +1282,12 @@ button:hover {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+  }
+
+
+  footer {
+    flex-direction: column;
+
   }
   
   .business-hours p {
@@ -1340,5 +1350,12 @@ button:hover {
   
   .social-media a {
     text-decoration: none;
+  }
+
+  .copywright {
+    color: #fff;
+    background-color: #071244;
+    flex-direction: row;
+    justify-content: center;
   }
 }
