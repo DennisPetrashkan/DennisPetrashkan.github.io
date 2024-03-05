@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const reviewElement = document.getElementById('reviews-list');
   let index = true;
 
-  fetch('http://ec2-3-16-158-11.us-east-2.compute.amazonaws.com:8080/getreviews')
+  fetch('reviews.json')
     .then(response => response.json())
     .then(reviews => {
       reviewsList = reviews.reviews
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // media
   const mediaElement = document.getElementById('media-list');
 
-  fetch('http://ec2-3-16-158-11.us-east-2.compute.amazonaws.com:8080/getmedia')
+  fetch('media.json')
     .then(response => response.json())
     .then(media => {
       mediaList = media.mediaItems
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // posts
   const postElement = document.getElementById('post-list');
 
-  fetch('http://ec2-3-16-158-11.us-east-2.compute.amazonaws.com:8080/getposts')
+  fetch('posts.json')
   .then(response => response.json())
   .then(posts => {
     postList = posts.localPosts
@@ -241,6 +241,8 @@ function resizeText(activeSlide, className) {
     element.style.fontSize = size + "px"
   }
 }
+
+
 
 
 
