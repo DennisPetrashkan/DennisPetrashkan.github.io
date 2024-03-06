@@ -865,13 +865,13 @@ p {
   flex-direction: row;
   width: 100%;
   max-width: 100%;
-  height: 40vw;
+  height: 50vh;
   flex-wrap: nowrap;
 }
 
 .contact-button-cont {
   position: absolute;
-  top: 38vw;
+  top: 50vh;
   z-index: 1;
   right: 0;
   left: 0;
