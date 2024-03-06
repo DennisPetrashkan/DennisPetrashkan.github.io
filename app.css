@@ -14,11 +14,10 @@ body {
   background-color: #f0f0f0;
   color: #000000;
   overflow-x: hidden;
+  font-family: 'Arial', sans-serif;
 }
 @media screen and (min-width: 480px) {
-  body {
-    font-family: 'Arial', sans-serif;
-  }
+  
   h1 {
     font-size: 3.3vw;
   }
@@ -141,7 +140,7 @@ body {
   .services-arrow-right {
     position: absolute;
     opacity: 1;
-    margin-top: 0vw;
+    margin-top: .2vw;
     margin-left: 10vw;
     font-size: 1.8vw;
     color:#FFFFFF;
@@ -152,7 +151,7 @@ body {
 
   .services-arrow-down {
     position: absolute;
-    margin-top: 0vw;
+    margin-top: .2vw;
     margin-left: 10vw;
     opacity: 0;
     font-size: 1.8vw;
@@ -491,6 +490,7 @@ button:hover {
   align-items: center;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
+  height: 100%;
 }
 
 .services li {
@@ -700,44 +700,38 @@ button:hover {
 @media screen and (max-width: 480px) {
 h1 {
   font-size: 6vw;
-  font-family: 'Arial', sans-serif;
 }
 
 h2 {
   font-size: 5.5vw;
-  font-family: 'Arial', sans-serif;
 }
 
 h3 {
   font-size: 5vw;
-  font-family: 'Arial', sans-serif;
 }
 
 h4 {
   font-size: 4.5vw;
-  font-family: 'Arial', sans-serif;
 }
 
 h5 {
   font-size: 4vw;
-  font-family: 'Arial', sans-serif;
 }
 
 p {
   font-size: 3.5vw;
-  font-family: 'Arial', sans-serif;
 }
 
   
 .header {
   background-color: #010A31;
-  padding: 2vw;
+  padding: 4vw;
   flex-direction: row;
   justify-content: center;
 }
 
 .banner {
-  width: 40vw;
+  width: 50vw;
   height: auto;
 }
 
@@ -747,7 +741,7 @@ p {
   left: 0;
   margin-top: 4vw;
   margin-left: 3vw;
-  width: 4vw;
+  width: 5vw;
   height: auto;
   cursor: pointer;
 }
@@ -1139,6 +1133,7 @@ button:hover {
 .services-cont {
   text-align: center;
   margin: 0;
+  margin-bottom: 8vh;
 }
 
 
@@ -1155,22 +1150,24 @@ button:hover {
   padding-left: 0;
 }
 
-.services h3 {
+.tag-cont {
   position: absolute;
   left: 0;
   right: 0;
-  top: 6vw;
+  top: 32vw;
   bottom: 0;
   padding: 1.5vw;
-  margin: auto;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+}
+
+.services h3 {
+  position: relative;
+  color: #333;
+  margin-top: 0;
 }
 
 .services li {
   position: relative;
-  margin: 0;
-  display: flex;
+  margin-top: 8vh;
   width: 33%;
   padding: 0;
   justify-content: space-between;
@@ -1183,19 +1180,13 @@ button:hover {
   text-align: center;
 }
 
-.services li:hover h3 {
-  opacity: 1;
-}
-
 .services li:hover img {
   padding: 0;
-  filter: brightness(50%)
 }
 
 .services img {
   width: 100%;
   padding: .4vw;
-  filter: brightness(100%);
   overflow: hidden;
   height: auto;
   border-radius: 1.5vw;

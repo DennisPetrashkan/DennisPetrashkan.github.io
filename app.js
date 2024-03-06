@@ -150,7 +150,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function startScrolling(mediaElement){
-  const scrollSpeed = 10; 
+  if (window.innerWidth <= 480){ 
+    const scrollSpeed = 20
+  }else{
+    const scrollSpeed = 10
+  }
+  
   const galleryWidth = mediaElement.scrollWidth;
   let scrollPosition = 0;
 
