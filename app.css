@@ -9,7 +9,6 @@ head {
 }
 
 body {
-  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f0f0f0;
@@ -17,6 +16,9 @@ body {
   overflow-x: hidden;
 }
 @media screen and (min-width: 480px) {
+  body {
+    font-family: 'Arial', sans-serif;
+  }
   h1 {
     font-size: 3.3vw;
   }
@@ -698,26 +700,32 @@ button:hover {
 @media screen and (max-width: 480px) {
 h1 {
   font-size: 6vw;
+  font-family: 'Arial', sans-serif;
 }
 
 h2 {
   font-size: 5.5vw;
+  font-family: 'Arial', sans-serif;
 }
 
 h3 {
   font-size: 5vw;
+  font-family: 'Arial', sans-serif;
 }
 
 h4 {
   font-size: 4.5vw;
+  font-family: 'Arial', sans-serif;
 }
 
 h5 {
   font-size: 4vw;
+  font-family: 'Arial', sans-serif;
 }
 
 p {
   font-size: 3.5vw;
+  font-family: 'Arial', sans-serif;
 }
 
   
