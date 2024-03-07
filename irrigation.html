@@ -90,10 +90,12 @@ body {
 
       .nav-menu ul {
         list-style: none;
+        overflow-y: hidden;
         padding: 2vw;
         flex: 1;
         flex-direction: column;
         align-items: start;
+        margin-bottom: 0;
       }
 
       .services-tab{
@@ -372,8 +374,8 @@ p {
   position: absolute;
   top: 0;
   left: 0;
-  margin-top: 4vw;
-  margin-left: 3vw;
+  margin-top: 6vw;
+  margin-left: 4vw;
   width: 5vw;
   height: auto;
   cursor: pointer;
@@ -395,6 +397,7 @@ p {
       .nav-menu ul {
         list-style: none;
         padding: 2vw;
+        overflow-y: hidden;
         display: flex;
         flex: 1;
         flex-direction: column;
@@ -453,11 +456,14 @@ p {
       }
 
       .services-arrow-right {
-        position: absolute;
+        position: relative;
         opacity: 1;
-        margin-top: 0;
-        margin-left: 28vw;
-        font-size: 5vw;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        z-index: 1;
+        font-size: 5.5vw;
         color:#FFFFFF;
         display: flex;
         align-items: center;
@@ -465,11 +471,15 @@ p {
       }
 
       .services-arrow-down {
-        position: absolute;
-        margin-top: 0;
-        margin-left: 28vw;
+        position: relative;
+        z-index: 3;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-left: -45%;
         opacity: 0;
-        font-size: 5vw;
+        font-size: 5.5vw;
         color:#FFFFFF;
         display: flex;
         align-items: center;
@@ -480,10 +490,9 @@ p {
         text-decoration: none;
         color: #fff;  
         display: flex;
-        margin: 0;
+        
         cursor: pointer;
       }
-
       /* Body Styles */
       .body-container {
           
@@ -645,7 +654,7 @@ p {
           <div id="nav-menu" class="nav-menu">
               <ul>
                   <li><a class="main-entry" href="index.html">Home</a></li>
-                  <li class="services-tab"><h5 class="main-entry" onclick="toggleServicesNavigation()">Services</h5><span id="services-arrow-right" class="services-arrow-right" onclick="toggleServicesNavigation()">&#8680;</span><span class="services-arrow-down" onclick="toggleServicesNavigation()">&#8681;</span></li>
+                  <li class="services-tab"><h5 class="main-entry" onclick="toggleServicesNavigation()">Services</h5><span id="services-arrow-right" class="services-arrow-right" onclick="toggleServicesNavigation()">&#8667;</span><span class="services-arrow-down" onclick="toggleServicesNavigation()">&#x290B;</span></li>
                   <div class="services-navigation">
                       <li><a style="margin-top: 0;" class="service-entry" href="lawn-care.html">Lawn Care</a></li>
                       <li><a class="service-entry" href="landscaping.html">Landscaping</a></li>

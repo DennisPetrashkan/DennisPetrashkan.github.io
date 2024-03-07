@@ -203,7 +203,7 @@ function sendEmail(){
   let emailAddress = document.getElementById('email').value;
   let messageBody = document.getElementById('message').value;
 
-  const url = 'http://localhost:8080/send-email';
+  const url = 'https://x3a459t8nd.execute-api.us-east-2.amazonaws.com/production';
 
   const data = {
       name: name,
