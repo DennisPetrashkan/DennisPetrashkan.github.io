@@ -252,6 +252,7 @@ body {
 .star {
   color: yellow;
   font-size: 2.5vw;
+  text-shadow: #010A31 1px 0 10px;
 }
 
 .comment {
@@ -969,7 +970,7 @@ p {
 .star {
   color: yellow;
   font-size: 2.5vw;
-  text-shadow: 10px 10px 10px #000000;
+  text-shadow: 1px 0 10px #010A31;
 }
 
 .comment {
