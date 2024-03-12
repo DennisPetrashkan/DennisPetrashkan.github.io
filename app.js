@@ -81,30 +81,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // media
   const mediaElement = document.getElementById('media-list');
+  let width = 0;
 
   fetch('media.json')
     .then(response => response.json())
     .then(media => {
       mediaList = media.mediaItems
+      viewportWidth = window.innerWidth;
       mediaList.forEach(media => {
         if (media.mediaFormat == "PHOTO"){
-            mediaElement.insertAdjacentHTML('beforeend', `<img class="media" src="${media.googleUrl}" alt="landscaping in North Port">`);
+            mediaElement.insertAdjacentHTML('beforeend', `<img class="media" src="${media.googleUrl}" alt="landscaping in North Port" loading="lazy">`);
+            
+            raw_width = media.dimensions.widthPixels
+            raw_height = media.dimensions.heightPixels
+            
+            width += (raw_width * (viewportWidth * .32)) / raw_height
         }
       });
-      let imgs = document.querySelectorAll("img");
+
+      startScrolling(mediaElement);
       
-      len = imgs.length
-      counter = 0;
+      // let imgs = document.querySelectorAll("img");
+      
+      // len = imgs.length
+      // counter = 0;
       
 
-      imgs.forEach((img) => (img.complete ? incrementCounter() : img.addEventListener("load", incrementCounter, false)));
+      // imgs.forEach((img) => (img.complete ? incrementCounter() : img.addEventListener("load", incrementCounter, false)));
 
-      function incrementCounter() {
-        counter++;
-        if (counter == len) {
-          startScrolling(mediaElement);
-        }
-      }
+      // function incrementCounter() {
+      //   counter++;
+      //   if (counter == len) {
+          
+      //   }
+      // }
     
     })
     .catch(error => console.error('Error fetching media:', error));
@@ -149,14 +159,15 @@ document.addEventListener('DOMContentLoaded', () => {
   
 });
 
-function startScrolling(mediaElement){
-  if (window.innerWidth <= 480){ 
-    scrollSpeed = 20
-  }else{
-    scrollSpeed = 10
-  }
+function startScrolling(mediaElement, width){
+  // if (window.innerWidth <= 480){ 
+  //   scrollSpeed = 20
+  // }else{
+  scrollSpeed = 10
+  // }
   
-  const galleryWidth = mediaElement.scrollWidth;
+  // const galleryWidth = mediaElement.scrollWidth;
+  let galleryWidth = width
   let scrollPosition = 0;
 
   setInterval(() => {
